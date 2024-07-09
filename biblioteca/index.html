@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Municipal</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<header>
+    <h1>Biblioteca Municipal</h1>
+    <nav>
+        <ul>
+            <li><a href="#start">Inicio</a></li>
+            <li><a href="#create-library">Criar Biblioteca</a></li>
+            <li><a href="#create-book">Criar Livro</a></li>
+            <li><a href="#add-book">Adicionar Livro na Biblioteca</a></li>
+            <li><a href="#lend-book">Emprestar Livro</a></li>
+            <li><a href="#return-book">Devolver livro</a></li>
+            <li><a href="#support">Suporte</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section id="start">
+        <h2>Olá, seja bem-vindo a Biblioteca Municipal</h2>
+        <p>Sinta-se a vontade para explorar nossa vasta coleção de livros e recursos digitais. Qualquer dúvida, acesse o suporte. Boa leitura!</p>
+    </section>
+
+    <section id="create-library">
+        <h2>Criar Biblioteca</h2>
+        <form>
+            <button type="submit">Criar uma Biblioteca</button>
+        </form>
+    </section>
+
+    <section id="create-book">
+        <h2>Criar Livro</h2>
+        <form>
+            <label for="create-book-title">Título:</label>
+            <input type="text" id="create-book-title" name="title" required>
+
+            <label for="create-book-author">Autor:</label>
+            <input type="text" id="create-book-author" name="author" required>
+
+            <button type="submit">Criar Livro</button>
+        </form>
+    </section>
+
+    <section id="add-book">
+        <h2>Adicionar Livro</h2>
+        <form>
+            <label for="add-book-title">Título:</label>
+            <input type="text" id="add-book-title" name="title" required>
+
+            <label for="add-book-author">Autor:</label>
+            <input type="text" id="add-book-author" name="author" required>
+
+            <button type="submit">Adicionar Livro</button>
+        </form>
+    </section>
+
+    <section id="lend-book">
+        <h2>Emprestar Livro</h2>
+        <form>
+            <label for="lend-book-title">Título:</label>
+            <input type="text" id="lend-book-title" name="title" required>
+
+            <label for="lend-book-author">Autor:</label>
+            <input type="text" id="lend-book-author" name="author" required>
+
+            <button type="submit">Emprestar Livro</button>
+        </form>
+    </section>
+
+    <section id="return-book">
+        <h2>Devolver Livro</h2>
+        <form>
+            <label for="return-book-title">Título:</label>
+            <input type="text" id="return-book-title" name="title" required>
+
+            <label for="return-book-author">Autor:</label>
+            <input type="text" id="return-book-author" name="author" required>
+
+            <button type="submit">Devolver Livro</button>
+        </form>
+    </section>
+</main>
+<footer>
+    <p> &copy; Copyright 2024 Biblioteca Municipal. Todos os direitos reservados.</p>
+</footer>
+</body>
+</html>
