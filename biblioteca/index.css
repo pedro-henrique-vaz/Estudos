@@ -30,10 +30,11 @@ main{
 }
 section {
     background-color: white;
+    text-align: justify-all;
     margin: 20px 0;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 form {
@@ -68,8 +69,8 @@ footer {
     background-color: rgb(54, 54, 54);
     color: white;
     text-align: center;
-    padding: 10px 0;
-    position: fixed;
+    padding: 20px 0;
+    /*position: fixed;*/
     bottom: 0;
     width: 100%;
 }
