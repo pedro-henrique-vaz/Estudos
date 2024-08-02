@@ -1,126 +1,234 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vôlei Todo Dia</title>
     <link rel="stylesheet" href="assets/css/variables.css">
     <link rel="stylesheet" href="assets/css/elements.css">
     <link rel="stylesheet" href="assets/css/classes.css">
     <link rel="stylesheet" href="assets/css/menu.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Landing Page</title>
 </head>
-<body class="main-bg">
-    <aside class="menu white-bg">
-        <div class="main-content menu-content">
-            <h1><a href="#home">LOGO</a></h1>
-            <nav>
-                <ul>
-                    <li><a href="#intro">Intro</a></li>
-                    <li><a href="#grid-one">Grid One</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#grid-two">Grid Two</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </aside>
+<body>
 
-        <div class="menu-spacing"></div>
+<input id="close-menu" class="close-menu" type="checkbox" aria-label="Close menu" role="button">
+<label class="close-menu-label" for="close-menu" title="close menu"></label>
+<aside class="menu white-bg">
+    <div class="main-content menu-content">
+        <h1 onclick="getElementById('close-menu').checked = false;">
+            <a href="#home">Vôlei</a>
+        </h1>
 
-    <section id="home" class="intro main-bg section">
-        <div class="main-content intro-content">
+        <nav>
+            <ul onclick="getElementById('close-menu').checked = false;">
+                <li><a href="#intro">Sobre</a></li>
+                <li><a href="#grid-one">Equipes</a></li>
+                <li><a href="#gallery">Galeria</a></li>
+                <li><a href="#grid-two">Dicas</a></li>
+                <li><a href="#pricing">Jogos</a></li>
+                <li><a href="#contact">Suporte</a></li>
+            </ul>
+        </nav>
+    </div>
+</aside>
+
+<div class="menu-spacing"></div>
+
+<section id="home" class="intro main-bg section">
+    <div class="main-content intro-content">
         <div class="intro-text-content">
-            <h2>Sombras do Amanhecer</h2>
-            <p>A luz do entardecer refletia nas folhas das árvores, criando um jogo de sombras e brilhos que dançavam com a brisa suave. O som distante das ondas do mar se misturava ao canto dos pássaros, compondo uma sinfonia natural que acalmava a mente e aquecia o coração. Cada passo na areia trazia consigo uma sensação de paz, como se o mundo parasse por um instante para apreciar a simplicidade da vida.</p>
+            <h2>Bem-Vindos ao nosso site!</h2>
+            <p>Seja você um jogador apaixonado, um fã dedicado ou alguém curioso para aprender mais sobre esse incrível esporte, você está no lugar certo! Nosso site é dedicado a tudo que envolve o mundo do vôlei, oferecendo uma plataforma onde jogadores, treinadores e entusiastas podem se conectar, aprender e compartilhar sua paixão.</p>
         </div>
-            <div class="intro-img">
-                <img src="assets/img/javascript.svg" alt="Logo de HTML, CSS e JS.">
+        <div class="intro-img">
+            <img src="assets/img/javascript.svg" alt="Logo de HTML, CSS e JS.">
+        </div>
+    </div>
+</section>
+
+<section id="intro" class="white-bg section">
+    <div class="main-content top3-content">
+        <h2>História do Vôlei</h2>
+        <p>O vôlei é um esporte dinâmico e emocionante que é praticado por milhões de pessoas ao redor do mundo. Seja em quadras fechadas, na praia ou em áreas abertas, o vôlei é um jogo de habilidade, trabalho em equipe e estratégia. Com origem no final do século XIX, o esporte evoluiu para se tornar um dos mais populares nas Olimpíadas e em campeonatos internacionais.</p>
+        <p>O vôlei foi criado em 1895 por William G. Morgan, um diretor de educação física nos Estados Unidos, como uma alternativa ao basquete, que ele considerava um esporte muito extenuante para algumas pessoas. Inicialmente chamado de "Mintonette", o esporte logo foi renomeado para vôlei, devido à natureza do jogo, em que a bola é constantemente "volleyed" (lançada de um lado para o outro).</p>
+        <p>Praticar vôlei oferece inúmeros benefícios físicos e mentais. O esporte melhora a coordenação motora, reflexos, força muscular e resistência cardiovascular. Além disso, por ser um esporte coletivo, o vôlei incentiva o trabalho em equipe, a comunicação e o desenvolvimento de habilidades sociais, tornando-o uma excelente atividade para a formação de vínculos e amizades.</p>
+    </div>
+</section>
+
+
+<section id="grid-one" class="grid-one main-bg section">
+    <div class="main-content grid-one-content">
+        <h2 class="grid-main-heading">Equipes</h2>
+        <p class="grid-description">A seguir, um resumo das seleções mais icônicas do vôLei: Brasil, China e Itália.</p>
+
+        <div class="grid">
+            <article>
+                <h3>Seleção Brasileira Masc.</h3>
+                <p>A Seleção Brasileira é uma das mais prestigiadas no cenário global, com três medalhas de ouro olímpicas (1992, 2004, 2016) e diversos títulos em competições como a Liga Mundial e o Campeonato Mundial. Com jogadores icônicos como Giba e Wallace, a equipe é conhecida por sua força no ataque e defesa sólida.</p>
+            </article>
+            <article>
+                <h3>Seleção Chinesa Fem.</h3>
+                <p>A Seleção Chinesa de Vôlei Feminino é uma potência mundial com três ouros olímpicos (1984, 2004, 2016). Liderada pela técnica Lang Ping e com estrelas como Zhu Ting, a equipe se destaca pela disciplina, eficiência tática e uma defesa formidável.</p>
+            </article>
+            <article>
+                <h3>Seleção Italiana Masc.</h3>
+                <p>A Seleção Italiana é uma das mais respeitadas na Europa, com múltiplos títulos na Liga Mundial e Campeonato Europeu. Embora ainda busque o ouro olímpico, a equipe é reconhecida por seu jogo técnico e inteligente, com jogadores como Ivan Zaytsev liderando a ofensiva.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="gallery" class="grid-one white-bg section">
+    <div class="main-content grid-one-content">
+        <h2 class="grid-main-heading">Galeria do Vôlei</h2>
+        <p class="grid-description">Aqui estão as mais incriveis fotos registradas em partidas de vôlei.</p>
+
+        <div class="grid">
+            <div class="gallery-img">
+                <img src="https://s2.glbimg.com/l83hg8fZJpokAts3Po8o_tji0-U=/620x413/smart/e.glbimg.com/og/ed/f/original/2016/07/08/gettyimages-150170118.jpg" alt="random image from unsplash" />
+            </div>
+            <div class="gallery-img">
+                <img src="https://midias.correiobraziliense.com.br/_midias/jpg/2023/07/13/675x450/1_wtqadzpvyh7unbklnw8w-28497837.jpg" alt="random image from unsplash" />
+            </div>
+            <div class="gallery-img">
+                <img src="https://ogimg.infoglobo.com.br/in/24546912-3d5-cdf/FT1086A/88805817_El-Camila-Brait-Jogos-Olimpicos.jpg" alt="random image from unsplash" />
+            </div>
+            <div class="gallery-img">
+                <img src="https://encurtador.com.br/ERXAW" alt="random image from unsplash" />
+            </div>
+            <div class="gallery-img">
+                <img src="https://s2-ge.glbimg.com/dRi_3I6p966i8sjOK_zxXNj3gdo=/0x0:3840x2559/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2024/g/d/RsRwAhTUmubLzdGvuMnQ/brasil.xjapao8.jpg" alt="random image from unsplash" />
+            </div>
+            <div class="gallery-img">
+                <img src="https://encurtador.com.br/vh8Nd" alt="random image from unsplash" />
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="intro" class="white-bg section">
-        <div class="main-content top3-content">
-            <h2>Top 3 Jobs</h2>
-            <p>A montanha se erguia majestosa à frente, desafiando aqueles que ousavam explorá-la. O ar rarefeito fazia cada respiração ser um esforço, mas a vista lá de cima compensava qualquer sacrifício. O horizonte parecia infinito, com picos cobertos de neve se estendendo até onde a vista alcançava. A sensação de estar no topo do mundo era avassaladora, uma mistura de êxtase e humildade diante da grandiosidade da natureza.</p>
-            <p>A lua cheia iluminava o velho farol abandonado, que ficava isolado no alto de um penhasco. O vento soprava forte, fazendo as ondas do mar quebrarem violentamente contra as rochas abaixo. No entanto, dentro do farol, havia uma estranha calmaria. A escada de madeira rangia suavemente enquanto alguém, envolto em um manto escuro, subia cada degrau com passos calculados</p>
-            <p>No meio da cidade agitada, entre buzinas e passos apressados, havia um pequeno oásis de tranquilidade. Um café escondido em uma rua estreita, onde o aroma do café fresco e o som suave de um violão ao fundo convidavam os visitantes a esquecerem por um momento o ritmo frenético lá fora. As paredes eram decoradas com pinturas coloridas e frases inspiradoras, criando um ambiente acolhedor que parecia um abraço em forma de lugar.</p>
+
+
+<section id="grid-two" class="grid-one main-bg section">
+    <div class="main-content grid-one-content">
+        <h2 class="grid-main-heading">Dicas</h2>
+        <p class="grid-description">Melhore sua perfomance com essas 3 dicas.</p>
+
+        <div class="grid">
+            <article>
+                <h3>Recepção</h3>
+                <p>A recepção é crucial no vôlei, pois determina a qualidade do levantamento e, consequentemente, do ataque. Mantenha os joelhos flexionados, posicione-se de forma estável e use as duas mãos para direcionar a bola com precisão. Trabalhe na leitura do saque adversário para antecipar a trajetória da bola.</p>
+            </article>
+            <article>
+                <h3>Comunicação</h3>
+                <p>O vôlei é um esporte de equipe que exige comunicação constante. Informe seus companheiros sobre a posição dos adversários, peça a bola quando necessário e indique suas intenções. Uma equipe que se comunica bem tende a cometer menos erros e a executar jogadas com mais eficiência.</p>
+            </article>
+            <article>
+                <h3>Treinamento</h3>
+                <p>Trabalhar nos fundamentos como saque, bloqueio, levantamento e ataque é essencial para qualquer jogador. Dedique tempo para praticar cada um desses elementos regularmente, aprimorando tanto a técnica quanto a consistência. Isso ajudará a construir uma base sólida para todas as situações de jogo.</p>
+            </article>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="grid-one" class="grid-one main-bg section">
-        <div class="main-content grid-one-content">
-        <h2 class="grid-main-heading">My Grid</h2>
-        <p class="grid-description">Uma breve descrição</p>
-            <div class="grid">
-                <article>
-                    <h3>Teste 1</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi earum, eveniet excepturi facilis fugit harum illo ipsum maxime natus optio pariatur quae quasi recusandae tenetur ullam vitae voluptatem voluptatum.</p>
-                </article>
-                <article>
-                    <h3>Teste 2</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi earum, eveniet excepturi facilis fugit harum illo ipsum maxime natus optio pariatur quae quasi recusandae tenetur ullam vitae voluptatem voluptatum.</p>
-                </article>
-                <article>
-                    <h3>Teste 3</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi earum, eveniet excepturi facilis fugit harum illo ipsum maxime natus optio pariatur quae quasi recusandae tenetur ullam vitae voluptatem voluptatum.</p>
-                </article>
-            </div>
+<section id="pricing" class="white-bg section">
+    <div class="main-content top3-content">
+        <h2>Jogos</h2>
+        <p>O vôlei é um esporte repleto de momentos emocionantes, e ao longo dos anos, várias partidas marcaram a história do esporte por sua intensidade, rivalidade e desfechos dramáticos.</p>
+        <p>Fique por dentro do calendário de jogos e campeonatos! Acompanhe as competições locais, regionais e nacionais, e torça por nossas equipes. Não perca a chance de assistir aos jogos ao vivo e sentir a emoção de cada ponto disputado.</p>
+
+        <div class="responsive-table">
+            <table>
+                <caption>Tabela de Jogos</caption>
+
+                <thead>
+                <tr>
+                    <th>Jogo 1</th>
+                    <th>Jogo 2</th>
+                    <th>Jogo 3</th>
+                    <th>Jogo 4</th>
+                    <th>Jogo 5</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>Brasil</td>
+                    <td>Itáia</td>
+                    <td>Rússia</td>
+                    <td>Eua</td>
+                    <td>Marrocos</td>
+                </tr>
+                <tr>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>X</td>
+                </tr>
+                <tr>
+                    <td>Nigéria</td>
+                    <td>Dinamarca</td>
+                    <td>Inglaterra</td>
+                    <td>França</td>
+                    <td>Argentina</td>
+                </tr>
+                </tbody>
+
+                <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Att 02/08</td>
+                </tr>
+                </tfoot>
+            </table>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="gallery" class="grid-one white-bg section">
-        <div class="main-content grid-one-content">
-            <h2 class="grid-main-heading">Gallery</h2>
-            <p class="grid-description">Uma breve descrição.</p>
-
-            <div class="grid">
-                <div class="gallery-img">
-                    <img src="https://images.unsplash.com/photo-1455849318743-b2233052fcff?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YWxlYXQlQzMlQjNyaW98ZW58MHx8MHx8fDA%3D" alt="random image from unsplash" />
-                </div>
-                <div class="gallery-img">
-                    <img src="https://images.unsplash.com/photo-1496449903678-68ddcb189a24?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="random image from unsplash" />
-                </div>
-                <div class="gallery-img">
-                    <img src="https://images.unsplash.com/photo-1485550409059-9afb054cada4?q=80&w=1365&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="random image from unsplash" />
-                </div>
-                <div class="gallery-img">
-                    <img src="https://images.unsplash.com/photo-1493612276216-ee3925520721?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="random image from unsplash" />
-                </div>
-                <div class="gallery-img">
-                    <img src="https://images.unsplash.com/photo-1494253109108-2e30c049369b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="random image from unsplash" />
-                </div>
-                <div class="gallery-img">
-                    <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="random image from unsplash" />
-                </div>
-            </div>
+<section id="contact" class="intro main-bg section">
+    <div class="main-content intro-content">
+        <div class="intro-text-content">
+            <h2>Voçe chegou ao fim!</h2>
+            <p>Obrigado por navegar em nosso site, esperamos voçe aqui novamente. Fique a vontade e qualquer dúvida, mande um email no suporte!</p>
         </div>
-    </section>
-
-    <section id="grid-two" class="grid-one main-bg section">
-        <div class="main-content grid-one-content">
-            <h2 class="grid-main-heading">My Grid</h2>
-            <p class="grid-description">Uma breve descrição.</p>
-
-            <div class="grid">
-                <article>
-                    <h3>Teste 1</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis cum delectus molestias. Atque doloribus nobis laudantium esse ut, non commodi maxime distinctio veritatis unde, reprehenderit minus ad dolores provident maiores.</p>
-                </article>
-                <article>
-                    <h3>Teste 2</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis cum delectus molestias. Atque doloribus nobis laudantium esse ut, non commodi maxime distinctio veritatis unde, reprehenderit minus ad dolores provident maiores.</p>
-                </article>
-                <article>
-                    <h3>Teste 2</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis cum delectus molestias. Atque doloribus nobis laudantium esse ut, non commodi maxime distinctio veritatis unde, reprehenderit minus ad dolores provident maiores.</p>
-                </article>
-            </div>
+        <div class="intro-img">
+            <img src="assets/img/javascript.svg" alt="Logo de HTML, CSS e JS.">
         </div>
-    </section>
+        <div class="contact-form">
+            <fieldset class="form-grid">
+                <legend>Entre em Contato</legend>
 
+                <div class="form-group">
+                    <label for="first-name">First name</label>
+                    <input type="text" name="first-name" id="first-name" placeholder="Nome">
+                </div>
 
+                <div class="form-group">
+                    <label for="last-name">last name</label>
+                    <input type="text" name="last-name" id="last-name" placeholder="Sobrenome">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" id="email" placeholder="E-mail">
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message" cols="30" rows="10" placeholder="Messagem"></textarea>
+                </div>
+
+                <div class="form-group full-width">
+                    <button type="submit">Enviar</button>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</section>
+<a class="back-to-top" href="#">➤</a>
 </body>
 </html>
