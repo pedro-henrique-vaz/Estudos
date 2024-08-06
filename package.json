@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/pedro-henrique-vaz/aprendendo#readme",
   "dependencies": {
+    "bootstrap-icons": "^1.11.3",
     "ts-node": "^10.9.2"
   }
 }
