@@ -17,7 +17,9 @@ button {
 .button-active {
     color: rgb(0, 183, 107);
 }
-
+.button-active-like {
+    color: #ff0000;
+}
 .button {
     font-size: 1.5em;
     cursor: pointer;

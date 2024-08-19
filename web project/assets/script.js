@@ -5,9 +5,10 @@ const cover = document.getElementById("cover");
 const play = document.getElementById("play");
 const next = document.getElementById("next");
 const previous = document.getElementById("previous");
+const likeButtom = document.getElementById("like");
 const currentProgress = document.getElementById("current-progress");
 const progressContainer = document.getElementById("progress-container");
-const shuffleBottom = document.getElementById("shuffle");
+const shuffleButtom = document.getElementById("shuffle");
 const repeatButton = document.getElementById('repeat');
 const songTime = document.getElementById('song-time');
 const totalTime = document.getElementById('total-time');
@@ -16,21 +17,25 @@ const badboys = {
     songName: "Bad Boys",
     file: "bad_boys",
     artist: "Inner Cycle",
+    liked: false
 };
 const havana = {
     songName: "Havana",
     file: "havana",
     artist: "Camila Cabello",
+    liked: false
 };
 const saveyourstears = {
     songName: "Save Yours Tears",
     file: "save_yours_tears",
     artist: "The Weeknd",
+    liked: false
 };
+
 let isPlaying = false;
 let isShuffled = false;
 let repeatOn = false;
-const originPlaylist = [badboys, havana, saveyourstears];
+const originPlaylist = JSON.parse(localStorage.getItem('playlist')) ?? [badboys, havana, saveyourstears,];
 let sortedPlaylist = [...originPlaylist];
 let index = 0;
 
@@ -71,6 +76,7 @@ function nextSong() {
         index += 1;
     }
     initializeSong();
+    likeButtonRender();
     playSong();
 }
 
@@ -82,11 +88,13 @@ function previousSong() {
         index -= 1;
     }
     initializeSong();
+    likeButtonRender();
     playSong();
 }
 function updateProgressBar(){
-    const barWidth = (song.currentTime/song.duration)*100;
+    const barWidth = (song.currentTime/song.duration) * 100;
     currentProgress.style.setProperty('--progress', `${barWidth}%`);
+    songTime.innerText = toHHMMSS(song.currentTime);
 }
 
 function jumpTo(event){
@@ -112,16 +120,63 @@ function shuffleBottomClicked(){
     if (isShuffled === false){
         isShuffled = true
         shuffleArray(sortedPlaylist)
-        shuffleBottom.classList.add('button-active')
+        shuffleButtom.classList.add('button-active')
     } else {
         isShuffled = false
         sortedPlaylist = [...originPlaylist]
-        shuffleBottom.classList.remove('button-active')
+        shuffleButtom.classList.remove('button-active')
     }
 }
 
-function repeatBottom (){
+function repeatButtomClicked (){
+    if (repeatOn === false) {
+        repeatOn = true;
+        repeatButton.classList.add('button-active');
+    } else {
+        repeatOn = false;
+        repeatButton.classList.remove('button-active');
+    }
+}
 
+function nextOrRepeat () {
+    if (repeatOn === false) {
+        nextSong()
+    } else {
+        playSong()
+    }
+}
+
+function toHHMMSS (originalNumber) {
+    let hours = Math.floor(originalNumber / 3600);
+    let minutes = Math.floor((originalNumber - hours * 3600) / 60);
+    let seconds = Math.floor(originalNumber - hours * 3600 - minutes * 60);
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+function updateTotalTime() {
+    totalTime.innerText = toHHMMSS(song.duration);
+}
+
+function likeButtonRender() {
+    if (sortedPlaylist[index].liked === true) {
+        likeButtom.querySelector('.bi').classList.remove('bi-heart');
+        likeButtom.querySelector('.bi').classList.add('bi-heart-fill');
+        likeButtom.querySelector('.bi').classList.add('button-active-like');
+    } else {
+        likeButtom.querySelector('.bi').classList.add('bi-heart');
+        likeButtom.querySelector('.bi').classList.remove('bi-heart-fill');
+        likeButtom.querySelector('.bi').classList.remove('button-active-like');
+    }
+}
+
+function likeButtonClicked () {
+    if (sortedPlaylist[index].liked === false) {
+        sortedPlaylist[index].liked = true;
+    } else {
+        sortedPlaylist[index].liked = false;
+    }
+    likeButtonRender();
+    localStorage.setItem('playlist', JSON.stringify(originPlaylist));
 }
 
 initializeSong();
@@ -130,6 +185,9 @@ play.addEventListener('click', playPauseDecider);
 previous.addEventListener('click', previousSong);
 next.addEventListener('click', nextSong);
 song.addEventListener('timeupdate', updateProgressBar);
+song.addEventListener('ended', nextOrRepeat);
+song.addEventListener('loadedmetadata', updateTotalTime);
 progressContainer.addEventListener('click', jumpTo);
-shuffleBottom.addEventListener("click", shuffleBottomClicked)
-repeatBottom.addEventListener("click", repeatBottomClicked)
+shuffleButtom.addEventListener("click", shuffleBottomClicked)
+repeatButton.addEventListener("click", repeatButtomClicked)
+likeButtom.addEventListener("click", likeButtonClicked)
