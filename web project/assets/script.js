@@ -2,6 +2,7 @@ const songName = document.getElementById("song-name");
 const bandName = document.getElementById("band-name");
 const song = document.getElementById("audio");
 const cover = document.getElementById("cover");
+
 const play = document.getElementById("play");
 const next = document.getElementById("next");
 const previous = document.getElementById("previous");
@@ -10,8 +11,14 @@ const currentProgress = document.getElementById("current-progress");
 const progressContainer = document.getElementById("progress-container");
 const shuffleButtom = document.getElementById("shuffle");
 const repeatButton = document.getElementById('repeat');
+
 const songTime = document.getElementById('song-time');
 const totalTime = document.getElementById('total-time');
+
+
+route.get('http://localhost:3333/bad_boys')
+
+
 
 const badboys = {
     songName: "Bad Boys",
@@ -27,7 +34,8 @@ const havana = {
 };
 const saveyourstears = {
     songName: "Save Yours Tears",
-    file: "save_yours_tears",
+    file: "http://localhost:3333/",
+    cover: "http://localhost:3333/",
     artist: "The Weeknd",
     liked: false
 };
@@ -64,7 +72,7 @@ function playPauseDecider() {
 function initializeSong() {
     songName.innerText = sortedPlaylist[index].songName;
     bandName.innerText = sortedPlaylist[index].artist;
-    song.src = `assets/songs/${sortedPlaylist[index].file}.mp3`;
+    song.src = `http://localhost:3333/${sortedPlaylist[index].file}.mp3`;
     cover.src = `assets/img/${sortedPlaylist[index].file}.png`;
 }
 
