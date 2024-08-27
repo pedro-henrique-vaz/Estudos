@@ -2,43 +2,40 @@ const songName = document.getElementById("song-name");
 const bandName = document.getElementById("band-name");
 const song = document.getElementById("audio");
 const cover = document.getElementById("cover");
-
 const play = document.getElementById("play");
 const next = document.getElementById("next");
 const previous = document.getElementById("previous");
-const likeButtom = document.getElementById("like");
+const likeButton = document.getElementById("like");
 const currentProgress = document.getElementById("current-progress");
 const progressContainer = document.getElementById("progress-container");
-const shuffleButtom = document.getElementById("shuffle");
+const shuffleButton = document.getElementById("shuffle");
 const repeatButton = document.getElementById('repeat');
-
 const songTime = document.getElementById('song-time');
 const totalTime = document.getElementById('total-time');
 
-
-route.get('http://localhost:3333/bad_boys')
-
-
-
 const badboys = {
     songName: "Bad Boys",
-    file: "bad_boys",
+    file: "http://localhost:3333/bad_boys.mp3",
+    cover: 'http://localhost:3333/bad_boys.png',
     artist: "Inner Cycle",
     liked: false
-};
+}
+
 const havana = {
     songName: "Havana",
-    file: "havana",
+    file: "http://localhost:3333/havana.mp3",
+    cover: "http://localhost:3333/havana.png",
     artist: "Camila Cabello",
     liked: false
-};
+}
+
 const saveyourstears = {
     songName: "Save Yours Tears",
-    file: "http://localhost:3333/",
-    cover: "http://localhost:3333/",
+    file: "http://localhost:3333/save_yours_tears.mp3",
+    cover: "http://localhost:3333/save_yours_tears.png",
     artist: "The Weeknd",
     liked: false
-};
+}
 
 let isPlaying = false;
 let isShuffled = false;
@@ -72,8 +69,8 @@ function playPauseDecider() {
 function initializeSong() {
     songName.innerText = sortedPlaylist[index].songName;
     bandName.innerText = sortedPlaylist[index].artist;
-    song.src = `http://localhost:3333/${sortedPlaylist[index].file}.mp3`;
-    cover.src = `assets/img/${sortedPlaylist[index].file}.png`;
+    song.src = sortedPlaylist[index].file;
+    cover.src = sortedPlaylist[index].cover;
 }
 
 function nextSong() {
@@ -128,11 +125,11 @@ function shuffleBottomClicked(){
     if (isShuffled === false){
         isShuffled = true
         shuffleArray(sortedPlaylist)
-        shuffleButtom.classList.add('button-active')
+        shuffleButton.classList.add('button-active')
     } else {
         isShuffled = false
         sortedPlaylist = [...originPlaylist]
-        shuffleButtom.classList.remove('button-active')
+        shuffleButton.classList.remove('button-active')
     }
 }
 
@@ -167,13 +164,13 @@ function updateTotalTime() {
 
 function likeButtonRender() {
     if (sortedPlaylist[index].liked === true) {
-        likeButtom.querySelector('.bi').classList.remove('bi-heart');
-        likeButtom.querySelector('.bi').classList.add('bi-heart-fill');
-        likeButtom.querySelector('.bi').classList.add('button-active-like');
+        likeButton.querySelector('.bi').classList.remove('bi-heart');
+        likeButton.querySelector('.bi').classList.add('bi-heart-fill');
+        likeButton.querySelector('.bi').classList.add('button-active-like');
     } else {
-        likeButtom.querySelector('.bi').classList.add('bi-heart');
-        likeButtom.querySelector('.bi').classList.remove('bi-heart-fill');
-        likeButtom.querySelector('.bi').classList.remove('button-active-like');
+        likeButton.querySelector('.bi').classList.add('bi-heart');
+        likeButton.querySelector('.bi').classList.remove('bi-heart-fill');
+        likeButton.querySelector('.bi').classList.remove('button-active-like');
     }
 }
 
@@ -196,6 +193,6 @@ song.addEventListener('timeupdate', updateProgressBar);
 song.addEventListener('ended', nextOrRepeat);
 song.addEventListener('loadedmetadata', updateTotalTime);
 progressContainer.addEventListener('click', jumpTo);
-shuffleButtom.addEventListener("click", shuffleBottomClicked)
+shuffleButton.addEventListener("click", shuffleBottomClicked)
 repeatButton.addEventListener("click", repeatButtomClicked)
-likeButtom.addEventListener("click", likeButtonClicked)
+likeButton.addEventListener("click", likeButtonClicked)
