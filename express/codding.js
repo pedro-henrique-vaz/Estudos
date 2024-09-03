@@ -1,45 +1,64 @@
 const express = require('express');
 const {Router} = require("express");
+const {router} = require("express/lib/application");
 const app = express();
 
+const songs = [
+    {
+        songName: "Bad Boys",
+        file: "http://localhost:1212/bad_boys.mp3",
+        cover: 'http://localhost:1212/bad_boys.png',
+        artist: "Inner Cycle",
+        liked: false
+    },
+    {
+        songName: "Havana",
+        file: "http://localhost:1212/havana.mp3",
+        cover: "http://localhost:1212/havana.png",
+        artist: "Camila Cabello",
+        liked: false
+    },
+    {
+        songName: "Save Yours Tears",
+        file: "http://localhost:1212/save_yours_tears.mp3",
+        cover: "http://localhost:1212/save_yours_tears.png",
+        artist: "The Weeknd",
+        liked: false
+    }
+]
+
+let currentIndex = 0;
+function getCurrentIndex() {
+    return songs[currentIndex];
+}
+
 app.use(express.static('public'));
-// app.use(express.json());
 
-// const route = Router()
+app.get('/song', (req, res) => {
+    res.json(getCurrentIndex());
+})
 
-// app.get('/bad_boys', (req, res) => {
-//     const badboys = {
-//         songName: "Bad Boys",
-//         file: "http://localhost:3333/bad_boys.mp3",
-//         cover: 'http://localhost:3333/bad_boys.png',
-//         artist: "Inner Cycle",
-//         liked: false
-//     }
-//     res.json(badboys);
-// });
-//
-// app.get('/havana', (req, res) => {
-//     const havana = {
-//         songName: "Havana",
-//         file: "http://localhost:3333/havana.mp3",
-//         cover: "http://localhost:3333/havana.png",
-//         artist: "Camila Cabello",
-//         liked: false
-//     }
-//     res.json(havana);
-// });
-//
-// app.get('/saveyourstears', (req, res) => {
-//     const saveyourstears = {
-//         songName: "Save Yours Tears",
-//         file: "http://localhost:3333/save_yours_tears.mp3",
-//         cover: "http://localhost:3333/save_yours_tears.png",
-//         artist: "The Weeknd",
-//         liked: false
-//     }
-//     res.json(saveyourstears);
-// });
+app.get('/next-song', (req, res) => {
+    if(currentIndex === songs.length - 1){
+        currentIndex = 0;
+    }
+    else {
+        currentIndex += 1;
+    }
+    res.json(getCurrentIndex());
+})
 
-app.listen(3333, () => {
-    console.log('Rodando na porta 3333');
+app.get('/previous-song', (req, res) => {
+    if(currentIndex === 0){
+        currentIndex = songs.length - 1;
+    }
+    else {
+        currentIndex -= 1;
+    }
+    res.json(getCurrentIndex());
+})
+
+
+app.listen(1212, () => {
+    console.log('Rodando na porta 1212');
 });

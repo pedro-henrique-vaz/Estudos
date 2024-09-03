@@ -15,24 +15,24 @@ const totalTime = document.getElementById('total-time');
 
 const badboys = {
     songName: "Bad Boys",
-    file: "http://localhost:3333/bad_boys.mp3",
-    cover: 'http://localhost:3333/bad_boys.png',
+    file: "http://localhost:1212/bad_boys.mp3",
+    cover: 'http://localhost:1212/bad_boys.png',
     artist: "Inner Cycle",
     liked: false
 }
 
 const havana = {
     songName: "Havana",
-    file: "http://localhost:3333/havana.mp3",
-    cover: "http://localhost:3333/havana.png",
+    file: "http://localhost:1212/havana.mp3",
+    cover: "http://localhost:1212/havana.png",
     artist: "Camila Cabello",
     liked: false
 }
 
 const saveyourstears = {
     songName: "Save Yours Tears",
-    file: "http://localhost:3333/save_yours_tears.mp3",
-    cover: "http://localhost:3333/save_yours_tears.png",
+    file: "http://localhost:1212/save_yours_tears.mp3",
+    cover: "http://localhost:1212/save_yours_tears.png",
     artist: "The Weeknd",
     liked: false
 }
