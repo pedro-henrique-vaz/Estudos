@@ -1,3 +1,4 @@
+
 const songName = document.getElementById("song-name");
 const bandName = document.getElementById("band-name");
 const song = document.getElementById("audio");
@@ -193,6 +194,8 @@ song.addEventListener('timeupdate', updateProgressBar);
 song.addEventListener('ended', nextOrRepeat);
 song.addEventListener('loadedmetadata', updateTotalTime);
 progressContainer.addEventListener('click', jumpTo);
-shuffleButton.addEventListener("click", shuffleBottomClicked)
-repeatButton.addEventListener("click", repeatButtomClicked)
-likeButton.addEventListener("click", likeButtonClicked)
+shuffleButton.addEventListener("click", shuffleBottomClicked);
+repeatButton.addEventListener("click", repeatButtomClicked);
+likeButton.addEventListener("click", likeButtonClicked);
+
+export {playSong, pauseSong, playPauseDecider, initializeSong, nextSong, previousSong, updateTotalTime, jumpTo, updateProgressBar, shuffleArray, shuffleBottomClicked, likeButtonClicked, likeButtonRender, repeatButtomClicked, nextOrRepeat, toHHMMSS, };
