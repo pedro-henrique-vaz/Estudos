@@ -50,28 +50,31 @@ function initializeSong() {
 }
 
 function nextSong() {
-    if(index === sortedPlaylist.length - 1){
-        index = 0;
-    }
-    else {
-        index += 1;
-    }
-    initializeSong();
-    likeButtonRender();
-    playSong();
+    axios.get('http://localhost:1212/next-song')
+        .then(function (resposta) {
+            songName.innerText = resposta.data.songName
+            bandName.innerText = resposta.data.artist
+            song.src = resposta.data.file
+            cover.src = resposta.data.cover
+            // initializeSong();
+            likeButtonRender();
+            playSong();
+        });
 }
 
 function previousSong() {
-    if(index === 0){
-        index = sortedPlaylist.length - 1;
-    }
-    else {
-        index -= 1;
-    }
-    initializeSong();
-    likeButtonRender();
-    playSong();
+    axios.get('http://localhost:1212/previous-song')
+        .then(function (resposta) {
+            songName.innerText = resposta.data.songName
+            bandName.innerText = resposta.data.artist
+            song.src = resposta.data.file
+            cover.src = resposta.data.cover
+            // initializeSong();
+            likeButtonRender();
+            playSong();
+        })
 }
+
 function updateProgressBar(){
     const barWidth = (song.currentTime/song.duration) * 100;
     currentProgress.style.setProperty('--progress', `${barWidth}%`);
@@ -85,31 +88,30 @@ function jumpTo(event){
     song.currentTime = jumpToTime;
 }
 
-function shuffleArray(preShuffleArray){
-    const size = sortedPlaylist.length;
-    let currentIndex = size - 1;
-    while(currentIndex > 0){
-        let randomIndex = Math.floor(Math.random() * size);
-        let aux = preShuffleArray[currentIndex];
-        preShuffleArray[currentIndex] = preShuffleArray[randomIndex];
-        preShuffleArray[randomIndex] = aux;
-        currentIndex -= 1;
-    }
+function shuffleArray(){
+    // const size = songs.length;
+    // let currentIndex = size - 1;
+    // while(currentIndex > 0){
+    //     let randomIndex = Math.floor(Math.random() * size);
+    //     let aux = preShuffleArray[currentIndex];
+    //     preShuffleArray[currentIndex] = preShuffleArray[randomIndex];
+    //     preShuffleArray[randomIndex] = aux;
+    //     currentIndex -= 1;
+    // }
 }
 
 function shuffleBottomClicked(){
     if (isShuffled === false){
         isShuffled = true
-        shuffleArray(sortedPlaylist)
+        shuffleArray()
         shuffleButton.classList.add('button-active')
     } else {
         isShuffled = false
-        sortedPlaylist = [...originPlaylist]
         shuffleButton.classList.remove('button-active')
     }
 }
 
-function repeatButtomClicked (){
+function repeatButtonClicked (){
     if (repeatOn === false) {
         repeatOn = true;
         repeatButton.classList.add('button-active');
@@ -138,8 +140,8 @@ function updateTotalTime() {
     totalTime.innerText = toHHMMSS(song.duration);
 }
 
-function likeButtonRender() {
-    if (sortedPlaylist[index].liked === true) {
+function likeButtonRender(song) {
+    if (song.liked === true) {
         likeButton.querySelector('.bi').classList.remove('bi-heart');
         likeButton.querySelector('.bi').classList.add('bi-heart-fill');
         likeButton.querySelector('.bi').classList.add('button-active-like');
@@ -150,14 +152,13 @@ function likeButtonRender() {
     }
 }
 
-function likeButtonClicked () {
-    if (sortedPlaylist[index].liked === false) {
-        sortedPlaylist[index].liked = true;
+function likeButtonClicked (song) {
+    if (song.liked === false) {
+        song.liked = true;
     } else {
-        sortedPlaylist[index].liked = false;
+        song.liked = false;
     }
     likeButtonRender();
-    localStorage.setItem('playlist', JSON.stringify(originPlaylist));
 }
 
 initializeSong();
@@ -170,5 +171,5 @@ song.addEventListener('ended', nextOrRepeat);
 song.addEventListener('loadedmetadata', updateTotalTime);
 progressContainer.addEventListener('click', jumpTo);
 shuffleButton.addEventListener("click", shuffleBottomClicked);
-repeatButton.addEventListener("click", repeatButtomClicked);
+repeatButton.addEventListener("click", repeatButtonClicked);
 likeButton.addEventListener("click", likeButtonClicked);

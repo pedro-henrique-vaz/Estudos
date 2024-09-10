@@ -3,7 +3,7 @@ const {Router} = require("express");
 const {router} = require("express/lib/application");
 const app = express();
 
-const songs = [
+let songs = [
     {
         songName: "Bad Boys",
         file: "http://localhost:1212/songs/bad_boys.mp3",
