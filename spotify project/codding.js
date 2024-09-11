@@ -58,7 +58,26 @@ app.get('/previous-song', (req, res) => {
     res.json(getCurrentIndex());
 })
 
+app.get('/shuffle', (req, res) => {
+    const size = songs.length;
+    let nowIndex = size - 1;
+    while(nowIndex > 0){
+        let randomIndex = Math.floor(Math.random() * size);
+        let aux = songs[nowIndex];
+        songs[nowIndex] = songs[randomIndex];
+        songs[randomIndex] = aux;
+        nowIndex -= 1;
+    }
+
+    res.json()
+})
+
+app.get('/unshuffle', (req, res) => {
+
+
+    res.json()
+})
 
 app.listen(1212, () => {
-    console.log('Rodando na porta 1212');
+    console.log('Server is running in port 1212');
 });

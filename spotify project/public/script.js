@@ -56,7 +56,6 @@ function nextSong() {
             bandName.innerText = resposta.data.artist
             song.src = resposta.data.file
             cover.src = resposta.data.cover
-            // initializeSong();
             likeButtonRender();
             playSong();
         });
@@ -69,9 +68,24 @@ function previousSong() {
             bandName.innerText = resposta.data.artist
             song.src = resposta.data.file
             cover.src = resposta.data.cover
-            // initializeSong();
             likeButtonRender();
             playSong();
+        })
+}
+
+function shuffle(){
+    axios.get('http://localhost:1212/shuffle')
+        .then(function () {
+            isShuffled = true
+            shuffleButton.classList.add('button-active')
+        })
+}
+
+function unshuffle(){
+    axios.get('http://localhost:1212/unshuffle')
+        .then(function () {
+            isShuffled = false
+            shuffleButton.classList.remove('button-active')
         })
 }
 
@@ -88,26 +102,11 @@ function jumpTo(event){
     song.currentTime = jumpToTime;
 }
 
-function shuffleArray(){
-    // const size = songs.length;
-    // let currentIndex = size - 1;
-    // while(currentIndex > 0){
-    //     let randomIndex = Math.floor(Math.random() * size);
-    //     let aux = preShuffleArray[currentIndex];
-    //     preShuffleArray[currentIndex] = preShuffleArray[randomIndex];
-    //     preShuffleArray[randomIndex] = aux;
-    //     currentIndex -= 1;
-    // }
-}
-
 function shuffleBottomClicked(){
     if (isShuffled === false){
-        isShuffled = true
-        shuffleArray()
-        shuffleButton.classList.add('button-active')
+        shuffle()
     } else {
-        isShuffled = false
-        shuffleButton.classList.remove('button-active')
+        unshuffle()
     }
 }
 
@@ -141,15 +140,15 @@ function updateTotalTime() {
 }
 
 function likeButtonRender(song) {
-    if (song.liked === true) {
-        likeButton.querySelector('.bi').classList.remove('bi-heart');
-        likeButton.querySelector('.bi').classList.add('bi-heart-fill');
-        likeButton.querySelector('.bi').classList.add('button-active-like');
-    } else {
+    // if (song.liked === true) {
+    //     likeButton.querySelector('.bi').classList.remove('bi-heart');
+    //     likeButton.querySelector('.bi').classList.add('bi-heart-fill');
+    //     likeButton.querySelector('.bi').classList.add('button-active-like');
+    // } else {
         likeButton.querySelector('.bi').classList.add('bi-heart');
         likeButton.querySelector('.bi').classList.remove('bi-heart-fill');
         likeButton.querySelector('.bi').classList.remove('button-active-like');
-    }
+    // }
 }
 
 function likeButtonClicked (song) {
