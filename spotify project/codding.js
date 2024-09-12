@@ -24,9 +24,31 @@ let songs = [
         cover: "http://localhost:1212/img/save_yours_tears.png",
         artist: "The Weeknd",
         liked: false
+    },
+    {
+        songName: "333",
+        file: "http://localhost:1212/songs/333.mp3",
+        cover: "http://localhost:1212/img/333.png",
+        artist: "Matuê",
+        liked: false
+    },
+    {
+        songName: "777-666",
+        file: "http://localhost:1212/songs/777-666.mp3",
+        cover: "http://localhost:1212/img/777-666.png",
+        artist: "Matuê",
+        liked: false
+    },
+    {
+        songName: "Melhor Eu Ir",
+        file: "http://localhost:1212/songs/melhor_eu_ir.mp3",
+        cover: "http://localhost:1212/img/melhor_eu_ir.png",
+        artist: "Péricles",
+        liked: false
     }
 ]
 
+let songsOrigin = [...songs]
 let currentIndex = 0;
 function getCurrentIndex() {
     return songs[currentIndex];
@@ -68,13 +90,11 @@ app.get('/shuffle', (req, res) => {
         songs[randomIndex] = aux;
         nowIndex -= 1;
     }
-
     res.json()
 })
 
 app.get('/unshuffle', (req, res) => {
-
-
+    songs = [...songsOrigin]
     res.json()
 })
 

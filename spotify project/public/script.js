@@ -56,8 +56,8 @@ function nextSong() {
             bandName.innerText = resposta.data.artist
             song.src = resposta.data.file
             cover.src = resposta.data.cover
-            likeButtonRender();
             playSong();
+            likeButtonRender();
         });
 }
 
@@ -68,8 +68,8 @@ function previousSong() {
             bandName.innerText = resposta.data.artist
             song.src = resposta.data.file
             cover.src = resposta.data.cover
-            likeButtonRender();
             playSong();
+            likeButtonRender();
         })
 }
 
@@ -140,15 +140,15 @@ function updateTotalTime() {
 }
 
 function likeButtonRender(song) {
-    // if (song.liked === true) {
-    //     likeButton.querySelector('.bi').classList.remove('bi-heart');
-    //     likeButton.querySelector('.bi').classList.add('bi-heart-fill');
-    //     likeButton.querySelector('.bi').classList.add('button-active-like');
-    // } else {
+    if (song.liked === true) {
+        likeButton.querySelector('.bi').classList.remove('bi-heart');
+        likeButton.querySelector('.bi').classList.add('bi-heart-fill');
+        likeButton.querySelector('.bi').classList.add('button-active-like');
+    } else {
         likeButton.querySelector('.bi').classList.add('bi-heart');
         likeButton.querySelector('.bi').classList.remove('bi-heart-fill');
         likeButton.querySelector('.bi').classList.remove('button-active-like');
-    // }
+    }
 }
 
 function likeButtonClicked (song) {
