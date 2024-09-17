@@ -46,6 +46,7 @@ function initializeSong() {
             bandName.innerText = resposta.data.artist
             song.src = resposta.data.file
             cover.src = resposta.data.cover
+            likeButtonRender(resposta.data.liked);
         })
 }
 
@@ -57,7 +58,7 @@ function nextSong() {
             song.src = resposta.data.file
             cover.src = resposta.data.cover
             playSong();
-            likeButtonRender();
+            likeButtonRender(resposta.data.liked);
         });
 }
 
@@ -69,7 +70,7 @@ function previousSong() {
             song.src = resposta.data.file
             cover.src = resposta.data.cover
             playSong();
-            likeButtonRender();
+            likeButtonRender(resposta.data.liked);
         })
 }
 
@@ -139,25 +140,20 @@ function updateTotalTime() {
     totalTime.innerText = toHHMMSS(song.duration);
 }
 
-function likeButtonRender(song) {
-    if (song.liked === true) {
-        likeButton.querySelector('.bi').classList.remove('bi-heart');
-        likeButton.querySelector('.bi').classList.add('bi-heart-fill');
-        likeButton.querySelector('.bi').classList.add('button-active-like');
-    } else {
-        likeButton.querySelector('.bi').classList.add('bi-heart');
-        likeButton.querySelector('.bi').classList.remove('bi-heart-fill');
-        likeButton.querySelector('.bi').classList.remove('button-active-like');
-    }
+function likeButtonRender(liked) {
+       if (liked === true){
+           likeButton.querySelector('.bi').classList.remove('bi-heart');
+           likeButton.querySelector('.bi').classList.add('bi-heart-fill');
+           likeButton.querySelector('.bi').classList.add('button-active-like');
+       } else {
+           likeButton.querySelector('.bi').classList.add('bi-heart');
+           likeButton.querySelector('.bi').classList.remove('bi-heart-fill');
+           likeButton.querySelector('.bi').classList.remove('button-active-like');
+       }
 }
 
-function likeButtonClicked (song) {
-    if (song.liked === false) {
-        song.liked = true;
-    } else {
-        song.liked = false;
-    }
-    likeButtonRender();
+function likeButtonClicked () {
+    const idSong = songs[currentIndex].id
 }
 
 initializeSong();
