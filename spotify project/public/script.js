@@ -16,6 +16,8 @@ const totalTime = document.getElementById('total-time');
 let isPlaying = false;
 let isShuffled = false;
 let repeatOn = false;
+let idSong;
+
 
 function playSong() {
     isPlaying = true;
@@ -40,8 +42,9 @@ function playPauseDecider() {
 }
 
 function initializeSong() {
-    axios.get('http://localhost:1212/song')
+    axios.get('http://192.168.1.11:1212/song')
         .then(function (resposta) {
+            idSong = resposta.data.id
             songName.innerText = resposta.data.songName
             bandName.innerText = resposta.data.artist
             song.src = resposta.data.file
@@ -51,8 +54,9 @@ function initializeSong() {
 }
 
 function nextSong() {
-    axios.get('http://localhost:1212/next-song')
+    axios.get('http://192.168.1.11:1212/next-song')
         .then(function (resposta) {
+            idSong = resposta.data.id
             songName.innerText = resposta.data.songName
             bandName.innerText = resposta.data.artist
             song.src = resposta.data.file
@@ -63,8 +67,9 @@ function nextSong() {
 }
 
 function previousSong() {
-    axios.get('http://localhost:1212/previous-song')
+    axios.get('http://192.168.1.11:1212/previous-song')
         .then(function (resposta) {
+            idSong = resposta.data.id
             songName.innerText = resposta.data.songName
             bandName.innerText = resposta.data.artist
             song.src = resposta.data.file
@@ -75,7 +80,7 @@ function previousSong() {
 }
 
 function shuffle(){
-    axios.get('http://localhost:1212/shuffle')
+    axios.get('http://192.168.1.11:1212/shuffle')
         .then(function () {
             isShuffled = true
             shuffleButton.classList.add('button-active')
@@ -83,10 +88,17 @@ function shuffle(){
 }
 
 function unshuffle(){
-    axios.get('http://localhost:1212/unshuffle')
+    axios.get('http://192.168.1.11:1212/unshuffle')
         .then(function () {
             isShuffled = false
             shuffleButton.classList.remove('button-active')
+        })
+}
+
+function likeButtonClicked () {
+    axios.get(`http://192.168.1.11:1212/like/${idSong}`)
+        .then(function (resposta) {
+            likeButtonRender(resposta.data)
         })
 }
 
@@ -150,10 +162,6 @@ function likeButtonRender(liked) {
            likeButton.querySelector('.bi').classList.remove('bi-heart-fill');
            likeButton.querySelector('.bi').classList.remove('button-active-like');
        }
-}
-
-function likeButtonClicked () {
-    const idSong = songs[currentIndex].id
 }
 
 initializeSong();
