@@ -44,6 +44,7 @@ function playPauseDecider() {
 function initializeSong() {
     axios.get('http://192.168.1.11:1212/song')
         .then(function (resposta) {
+            console.log(resposta)
             idSong = resposta.data.id
             songName.innerText = resposta.data.songName
             bandName.innerText = resposta.data.artist

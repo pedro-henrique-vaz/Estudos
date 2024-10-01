@@ -54,6 +54,7 @@ let songs = [
     }
 ]
 
+let currentIndex = 0;
 let songsOrigin = [...songs]
 function getCurrentIndex() {
     return songs[currentIndex];
@@ -62,6 +63,7 @@ function getCurrentIndex() {
 app.use(express.static('public'));
 
 app.get('/song', (req, res) => {
+    console.log(req.socket.remoteAddress);
     res.json(getCurrentIndex());
 })
 
