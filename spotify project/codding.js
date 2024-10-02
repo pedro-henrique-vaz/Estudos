@@ -57,15 +57,15 @@ let songs = [
 let address = [
     {
         ip: xmlhttp,
-        id: 0
+        index: 0
     },
     {
         ip: xmlhttp,
-        id: 0
+        index: 0
     },
     {
         ip: xmlhttp,
-        id: 0
+        index: 0
     },
 ]
 let currentIndex = 0;
