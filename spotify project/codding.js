@@ -54,6 +54,20 @@ let songs = [
     }
 ]
 
+let address = [
+    {
+        ip: xmlhttp,
+        id: 0
+    },
+    {
+        ip: xmlhttp,
+        id: 0
+    },
+    {
+        ip: xmlhttp,
+        id: 0
+    },
+]
 let currentIndex = 0;
 let songsOrigin = [...songs]
 function getCurrentIndex() {
