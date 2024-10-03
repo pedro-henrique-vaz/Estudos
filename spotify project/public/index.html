@@ -37,14 +37,6 @@
         <button id="repeat" class="button"><i class="bi bi-repeat"></i></button>
     </div>
 </div>
-<script>
-    let xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", 'https://meuip.com/api/meuip.php');
-    xmlhttp.send();
-    xmlhttp.onload = function(e) {
-        alert("Seu IP é: "+xmlhttp.response);
-    }
-</script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="script.js"></script>
 </body>
