@@ -3,12 +3,7 @@ const {Router} = require("express");
 const {router} = require("express/lib/application");
 const app = express();
 
-let playersStatus = [
-    // {
-    //     ip: '',
-    //     index: 0
-    // },
-];
+let playersStatus = [];
 
 let songs = [
     {
@@ -61,20 +56,10 @@ let songs = [
     }
 ]
 
-let currentIndex = 0;
 let songsOrigin = [...songs]
 function getCurrentIndex(index) {
     return songs[index];
 }
-
-function getCurrentSong(ip) {
-    if (!playersStatus[ip]) {
-        playersStatus[ip] = {index: 0};
-    }
-    return
-    songs[playersStatus[ip].index]
-}
-
 app.use(express.static('public'));
 
 app.get('/song', (req, res) => {
@@ -88,26 +73,41 @@ app.get('/song', (req, res) => {
 })
 
 app.get('/next-song', (req, res) => {
-    if(currentIndex === songs.length - 1){
-        currentIndex = 0;
+    let player = playersStatus.find(el => el.ip === req.socket.remoteAddress);
+    if (!player) {
+        player = {ip: req.socket.remoteAddress, index: 0}
+        playersStatus.push(player)
     }
-    else {
-        currentIndex += 1;
+    if (player.index === songs.length - 1) {
+        player.index = 0;
+    } else {
+        player.index += 1
     }
-    res.json(getCurrentIndex(currentIndex));
+    res.json(getCurrentIndex(player.index));
 })
 
 app.get('/previous-song', (req, res) => {
-    if(currentIndex === 0){
-        currentIndex = songs.length - 1;
+    let player = playersStatus.find(el => el.ip === req.socket.remoteAddress);
+    if (!player) {
+        player = {ip: req.socket.remoteAddress, index: 0}
+        playersStatus.push(player)
+    }
+    if(player.index === 0){
+        player.index = songs.length - 1;
     }
     else {
-        currentIndex -= 1;
+        player.index -= 1;
     }
-    res.json(getCurrentIndex(currentIndex));
+    res.json(getCurrentIndex(player.index));
 })
 
 app.get('/shuffle', (req, res) => {
+    let player = playersStatus.find(el => el.ip === req.socket.remoteAddress);
+    if (!player) {
+        player = {ip: req.socket.remoteAddress, index: 0, array: [...songs]}
+        playersStatus.push(player)
+    }
+
     const size = songs.length;
     let nowIndex = size - 1;
     while(nowIndex > 0){
@@ -117,15 +117,26 @@ app.get('/shuffle', (req, res) => {
         songs[randomIndex] = aux;
         nowIndex -= 1;
     }
-    res.json()
+    res.json(getCurrentIndex(player.index));
 })
 
 app.get('/unshuffle', (req, res) => {
+    let player = playersStatus.find(el => el.ip === req.socket.remoteAddress);
+    if (!player) {
+        player = {ip: req.socket.remoteAddress, index: 0, array: [...songs]}
+        playersStatus.push(player)
+    }
     songs = [...songsOrigin]
-    res.json()
+    res.json(getCurrentIndex(player.index))
 })
 
 app.get('/like/:id', (req, res) => {
+    let player = playersStatus.find(el => el.ip === req.socket.remoteAddress);
+    if (!player) {
+        player = {ip: req.socket.remoteAddress, index: 0, array: [...songs]}
+        playersStatus.push(player)
+    }
+
     const songId = req.params.id
     const result = songs.find(s => s.id === +songId)
     if (!result) {
@@ -135,6 +146,7 @@ app.get('/like/:id', (req, res) => {
     }
     result.liked = !result.liked;
     res.json(result.liked);
+
 })
 
 app.listen(1212, () => {
