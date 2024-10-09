@@ -70,9 +70,7 @@ app.use((req, res, next) => {
         playersStatus.push(player)
     }
     req.app.locals.player = player
-
     next()
-
     console.log(req.path, player.ip, player.songs[player.index])
 })
 
@@ -126,7 +124,7 @@ app.get('/unshuffle', (req, res) => {
 
 app.get('/like/:id', (req, res) => {
     let player = req.app.locals.player
-    const songId = req.params.id
+    const songId = req.params.id.player
     const result = player.songs.find(s => s.id === +songId)
     if (!result) {
         res.status(404)
