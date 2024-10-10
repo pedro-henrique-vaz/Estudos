@@ -103,7 +103,6 @@ app.get('/previous-song', (req, res) => {
 
 app.get('/shuffle', (req, res) => {
     let player = req.app.locals.player
-
     const size = player.songs.length;
     let nowIndex = size - 1;
     while(nowIndex > 0){
@@ -124,7 +123,7 @@ app.get('/unshuffle', (req, res) => {
 
 app.get('/like/:id', (req, res) => {
     let player = req.app.locals.player
-    const songId = req.params.id.player
+    const songId = req.params.id
     const result = player.songs.find(s => s.id === +songId)
     if (!result) {
         res.status(404)
