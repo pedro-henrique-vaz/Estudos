@@ -52,7 +52,7 @@ let songs = [
         file: "http://192.168.1.11:1212/songs/melhor_eu_ir.mp3",
         cover: "http://192.168.1.11:1212/img/melhor_eu_ir.png",
         artist: "Péricles",
-        liked: false
+        liked: false,
     }
 ]
 
@@ -66,7 +66,7 @@ app.use(express.static('public'));
 app.use((req, res, next) => {
     let player = playersStatus.find(el => el.ip === req.socket.remoteAddress);
     if (!player) {
-        player = {ip: req.socket.remoteAddress, index: 0, songs: [...songs]}
+        player = {ip: req.socket.remoteAddress, index: 0, songs: [...songs.map(song => ({ ...song}))]};
         playersStatus.push(player)
     }
     req.app.locals.player = player
@@ -137,3 +137,38 @@ app.get('/like/:id', (req, res) => {
 app.listen(1212, () => {
     console.log('Server is running in port 1212');
 });
+
+function soma(a, b) {
+    return a+b
+}
+function diff(a,b) {
+    return a-b
+}
+function mul(a,b) {
+    return a*b
+}
+function div(a,b){
+    return a/b
+}
+function sumOfSquare(a,b) {
+    return a*a + b*b
+}
+
+function processarOperacao(a, b, op /* function(x:number,y:number):number*/ ) {
+    return op(a,b)
+}
+
+processarOperacao(1, 2, soma)
+
+processarOperacao(2, 2, sumOfSquare)
+processarOperacao(2, 2, function(x,y) {
+    return x*x + y*y
+})
+processarOperacao(2, 2, (x,y) => {
+    return x*x + y*y
+})
+processarOperacao(2, 2, (x,y) => x*x + y*y)
+processarOperacao(2, 2, x => x*x)
+
+processarOperacao(2, 2, 3)
+processarOperacao(2, 2, (x,y,z) => x+y+z)
