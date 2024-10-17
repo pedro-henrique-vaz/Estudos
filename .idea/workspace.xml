@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="df2c5af0-ed9a-4cdb-bacc-84a037331017" name="Changes" comment="implementação do ip/id">
+      <change beforePath="$PROJECT_DIR$/spotify project/codding.js" beforeDir="false" afterPath="$PROJECT_DIR$/spotify project/codding.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+        <option value="CSS File" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2gYs1HzG7XfdBk9eeaDxhKOmfT4" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.index.html (1).executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.index.html (2).executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.index.html (3).executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.testes.html.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.codding.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.script.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;20.10.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.10.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/sergio/WebstormProjects/aprendendo/spotify project/public&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/sergio/.local/share/JetBrains/Toolbox/apps/webstorm-2/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/spotify project/public" />
+      <recent name="$PROJECT_DIR$/express/public" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/spotify project/public" />
+      <recent name="$PROJECT_DIR$/web_project" />
+      <recent name="$PROJECT_DIR$/web_project/assets" />
+      <recent name="$PROJECT_DIR$/web_project/assets/css" />
+      <recent name="$PROJECT_DIR$/spotify project/public/songs" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Node.js.codding.js">
+    <configuration name="index.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/aprendendo/spotify project/public/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.html (3)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/aprendendo/web project/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="codding.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/spotify project/codding.js" working-dir="$PROJECT_DIR$/spotify project">
+      <method v="2" />
+    </configuration>
+    <configuration name="script.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/spotify project/public/script.js" working-dir="$PROJECT_DIR$/web_project/assets">
+      <method v="2" />
+    </configuration>
+    <configuration name="test.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/test.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.codding.js" />
+        <item itemvalue="JavaScript Debug.index.html (1)" />
+        <item itemvalue="Node.js.script.js" />
+        <item itemvalue="Node.js.test.js" />
+        <item itemvalue="JavaScript Debug.index.html (3)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-b86d7ee83eed-JavaScript-WS-243.19420.26" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="df2c5af0-ed9a-4cdb-bacc-84a037331017" name="Changes" comment="" />
+      <created>1715885628896</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715885628896</updated>
+      <workItem from="1715885629912" duration="1485000" />
+      <workItem from="1716311773019" duration="1713000" />
+      <workItem from="1717706316140" duration="740000" />
+      <workItem from="1718730390416" duration="27000" />
+      <workItem from="1718731509301" duration="8295000" />
+      <workItem from="1718817049568" duration="5809000" />
+      <workItem from="1718901767243" duration="10329000" />
+      <workItem from="1720546469214" duration="3928000" />
+      <workItem from="1720632320973" duration="6889000" />
+      <workItem from="1720719301907" duration="7925000" />
+      <workItem from="1720808414336" duration="6452000" />
+      <workItem from="1721674009046" duration="6549000" />
+      <workItem from="1721760378781" duration="2954000" />
+      <workItem from="1721844657040" duration="3606000" />
+      <workItem from="1722014984137" duration="7434000" />
+      <workItem from="1722284978891" duration="3452000" />
+      <workItem from="1722452903804" duration="9374000" />
+      <workItem from="1722622300926" duration="12064000" />
+      <workItem from="1722970873635" duration="4394000" />
+      <workItem from="1723141142736" duration="8270000" />
+      <workItem from="1723226577477" duration="3266000" />
+      <workItem from="1723659909697" duration="7555000" />
+      <workItem from="1723668103496" duration="686000" />
+      <workItem from="1723831582749" duration="10214000" />
+      <workItem from="1724091431154" duration="10629000" />
+      <workItem from="1724261467737" duration="6816000" />
+      <workItem from="1724783118081" duration="7582000" />
+      <workItem from="1725389134156" duration="8830000" />
+      <workItem from="1725475951751" duration="9251000" />
+      <workItem from="1725992673736" duration="8228000" />
+      <workItem from="1726080697779" duration="9829000" />
+      <workItem from="1726165705588" duration="8558000" />
+      <workItem from="1726597342121" duration="138000" />
+      <workItem from="1726597489392" duration="1163000" />
+      <workItem from="1726684075980" duration="11242000" />
+      <workItem from="1727806685402" duration="4297000" />
+      <workItem from="1727813474226" duration="57000" />
+      <workItem from="1727893716635" duration="2502000" />
+      <workItem from="1727979084981" duration="7736000" />
+      <workItem from="1728067570802" duration="10508000" />
+      <workItem from="1728499760762" duration="2717000" />
+      <workItem from="1728585371065" duration="10561000" />
+      <workItem from="1729104505610" duration="26000" />
+      <workItem from="1729104609807" duration="8355000" />
+      <workItem from="1729190049975" duration="887000" />
+      <workItem from="1729192088153" duration="1361000" />
+    </task>
+    <task id="LOCAL-00001" summary="movendo arquivos para novo repositorio">
+      <option name="closed" value="true" />
+      <created>1715885817218</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715885817218</updated>
+    </task>
+    <task id="LOCAL-00002" summary="movendo arquivos para novo repositorio">
+      <option name="closed" value="true" />
+      <created>1718742165635</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1718742165635</updated>
+    </task>
+    <task id="LOCAL-00003" summary="movendo arquivos para novo repositorio">
+      <option name="closed" value="true" />
+      <created>1718824835029</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1718824835029</updated>
+    </task>
+    <task id="LOCAL-00004" summary="atualização img/p">
+      <option name="closed" value="true" />
+      <created>1718913085812</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1718913085812</updated>
+    </task>
+    <task id="LOCAL-00005" summary="atualização img/p">
+      <option name="closed" value="true" />
+      <created>1720556922979</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1720556922979</updated>
+    </task>
+    <task id="LOCAL-00006" summary="atualização img/p">
+      <option name="closed" value="true" />
+      <created>1720644623224</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1720644623224</updated>
+    </task>
+    <task id="LOCAL-00007" summary="atualização img/p">
+      <option name="closed" value="true" />
+      <created>1720730250267</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1720730250267</updated>
+    </task>
+    <task id="LOCAL-00008" summary="atualização img/p">
+      <option name="closed" value="true" />
+      <created>1720819098199</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1720819098199</updated>
+    </task>
+    <task id="LOCAL-00009" summary="atualização img/p">
+      <option name="closed" value="true" />
+      <created>1721684439301</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1721684439301</updated>
+    </task>
+    <task id="LOCAL-00010" summary="landing page course html and css">
+      <option name="closed" value="true" />
+      <created>1721858330922</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1721858330922</updated>
+    </task>
+    <task id="LOCAL-00011" summary="landing page course html and css - pagina inicial">
+      <option name="closed" value="true" />
+      <created>1722023212923</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1722023212923</updated>
+    </task>
+    <task id="LOCAL-00012" summary="landing page course html and css - separando o css">
+      <option name="closed" value="true" />
+      <created>1722288420760</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1722288420760</updated>
+    </task>
+    <task id="LOCAL-00013" summary="landing page course html and css - separando o css">
+      <option name="closed" value="true" />
+      <created>1722462461115</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1722462461115</updated>
+    </task>
+    <task id="LOCAL-00014" summary="landing page finalizada">
+      <option name="closed" value="true" />
+      <created>1722637023329</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1722637023330</updated>
+    </task>
+    <task id="LOCAL-00015" summary="landing page finalizada">
+      <option name="closed" value="true" />
+      <created>1722976843597</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1722976843597</updated>
+    </task>
+    <task id="LOCAL-00016" summary="web project (css/html)">
+      <option name="closed" value="true" />
+      <created>1723150411530</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1723150411530</updated>
+    </task>
+    <task id="LOCAL-00017" summary="web project (css/html)">
+      <option name="closed" value="true" />
+      <created>1723230263013</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1723230263013</updated>
+    </task>
+    <task id="LOCAL-00018" summary="web project (css/html)">
+      <option name="closed" value="true" />
+      <created>1723668574359</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1723668574359</updated>
+    </task>
+    <task id="LOCAL-00019" summary="web project (css/html)">
+      <option name="closed" value="true" />
+      <created>1723841820027</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1723841820027</updated>
+    </task>
+    <task id="LOCAL-00020" summary="web project Spotify">
+      <option name="closed" value="true" />
+      <created>1724101809243</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1724101809243</updated>
+    </task>
+    <task id="LOCAL-00021" summary="web project Spotify">
+      <option name="closed" value="true" />
+      <created>1724268058807</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1724268058807</updated>
+    </task>
+    <task id="LOCAL-00022" summary="web project Spotify">
+      <option name="closed" value="true" />
+      <created>1724789744264</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1724789744264</updated>
+    </task>
+    <task id="LOCAL-00023" summary="web project Spotify">
+      <option name="closed" value="true" />
+      <created>1724791630710</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1724791630710</updated>
+    </task>
+    <task id="LOCAL-00024" summary="web project Spotify">
+      <option name="closed" value="true" />
+      <created>1725401176521</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1725401176521</updated>
+    </task>
+    <task id="LOCAL-00025" summary="web project Spotify">
+      <option name="closed" value="true" />
+      <created>1725479822449</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1725479822449</updated>
+    </task>
+    <task id="LOCAL-00026" summary="web project Spotify">
+      <option name="closed" value="true" />
+      <created>1725485187082</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1725485187082</updated>
+    </task>
+    <task id="LOCAL-00027" summary="web project Spotify">
+      <option name="closed" value="true" />
+      <created>1726004218915</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1726004218915</updated>
+    </task>
+    <task id="LOCAL-00028" summary="web project Spotify">
+      <option name="closed" value="true" />
+      <created>1726091094754</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1726091094754</updated>
+    </task>
+    <task id="LOCAL-00029" summary="web project Spotify">
+      <option name="closed" value="true" />
+      <created>1726175692790</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1726175692790</updated>
+    </task>
+    <task id="LOCAL-00030" summary="web project Spotify">
+      <option name="closed" value="true" />
+      <created>1726602379591</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1726602379591</updated>
+    </task>
+    <task id="LOCAL-00031" summary="web project Spotify">
+      <option name="closed" value="true" />
+      <created>1726695315616</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1726695315616</updated>
+    </task>
+    <task id="LOCAL-00032" summary="web project Spotify">
+      <option name="closed" value="true" />
+      <created>1727813434976</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1727813434976</updated>
+    </task>
+    <task id="LOCAL-00033" summary="implementação do ip/id">
+      <option name="closed" value="true" />
+      <created>1727898259656</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1727898259657</updated>
+    </task>
+    <task id="LOCAL-00034" summary="implementação do ip/id">
+      <option name="closed" value="true" />
+      <created>1727898494768</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1727898494768</updated>
+    </task>
+    <task id="LOCAL-00035" summary="implementação do ip/id">
+      <option name="closed" value="true" />
+      <created>1727989660293</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1727989660293</updated>
+    </task>
+    <task id="LOCAL-00036" summary="implementação do ip/id">
+      <option name="closed" value="true" />
+      <created>1728075737982</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1728075737982</updated>
+    </task>
+    <task id="LOCAL-00037" summary="implementação do ip/id">
+      <option name="closed" value="true" />
+      <created>1728077860160</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1728077860160</updated>
+    </task>
+    <task id="LOCAL-00038" summary="implementação do ip/id">
+      <option name="closed" value="true" />
+      <created>1728503033358</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1728503033358</updated>
+    </task>
+    <task id="LOCAL-00039" summary="implementação do ip/id">
+      <option name="closed" value="true" />
+      <created>1728597061050</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1728597061051</updated>
+    </task>
+    <task id="LOCAL-00040" summary="implementação do ip/id">
+      <option name="closed" value="true" />
+      <created>1729116002696</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1729116002696</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/curso_ts/app.js" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="GitHub.CommitStatus" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="movendo arquivos para novo repositorio" />
+    <MESSAGE value="atualização img/p" />
+    <MESSAGE value="landing page course html and css" />
+    <MESSAGE value="landing page course html and css - pagina inicial" />
+    <MESSAGE value="landing page course html and css - separando o css" />
+    <MESSAGE value="landing page finalizada" />
+    <MESSAGE value="web project (css/html)" />
+    <MESSAGE value="web project Spotify" />
+    <MESSAGE value="implementação do ip/id" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementação do ip/id" />
+  </component>
+</project>
