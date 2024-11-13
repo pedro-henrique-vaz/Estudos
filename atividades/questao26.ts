@@ -5,12 +5,15 @@ function insertionSort(array2:number[]){
     let j;
     let aux;
 
-    for(i = 1; i < array2.length; i++){
-        for(j = i - 1; j < array2.length; j++){
-            if(array2[i] < array2[j]){
+    for(i = 1; i < array2.length; i++){ // anda pra frente
+        for(j = i - 1; j >= 0; j--){ // anda pra tras
+            if(array2[j + 1] < array2[j]){
                 aux = array2[j]
-                array2[j] = array2[i]
-                array2[i] = array2[j]
+                array2[j] = array2[j + 1]
+                array2[j + 1] = aux
+                if(array2[j+1] == array2[j]){
+                break;
+                }           
             }
             console.log(array2)
         }
