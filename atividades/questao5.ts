@@ -1,15 +1,22 @@
-import {questionNumber} from "./utils";
+import {questionNumber, questionStr} from "./utils";
 
 async function main() {
-    console.log('Olá, vamos descobrir quantos dias se passaram desde o seu nascimento.')
-    let ano: number = await questionNumber('Qual o ano em que voçẽ nasceu? ')
-    let mes: number = await questionNumber('Qual o mes (em numeros) em que voçẽ nasceu? ')
-    let dia: number = await questionNumber('Qual o dia (em numeros) em que voçẽ nasceu? ')
-
-    const hoje = new Date();
-    const nascimento = new Date(ano, mes - 1, dia)
-
-    var soma: number  = Math.floor((hoje.getTime() - nascimento.getTime())/(1000*60*60*24))
-    console.log(`Desde o dia de seu nascimento, se passaram ${soma} dias`)
+    let s: string = await questionStr('Qual o numero romano ')
+    const numRoman = {
+        I: 1,
+        V: 5,
+        X: 10,
+        L: 50,
+        C: 100,
+        D: 500,
+        M: 1000
+    }
+    let soma;
+    for (let i = 0; i < s.length; i++){
+        if(s[0] === "X"){
+            soma + 10
+            soma = 0
+        } 
+    }
 }
 main()

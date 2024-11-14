@@ -10,12 +10,10 @@ function insertionSort(array2:number[]){
             if(array2[j + 1] < array2[j]){
                 aux = array2[j]
                 array2[j] = array2[j + 1]
-                array2[j + 1] = aux
-                if(array2[j+1] == array2[j]){
-                break;
-                }           
+                array2[j + 1] = aux          
+            } else {
+                break
             }
-            console.log(array2)
         }
     }
     return array2
