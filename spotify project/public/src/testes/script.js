@@ -42,7 +42,7 @@ function playPauseDecider() {
 }
 
 function initializeSong() {
-    axios.get('http://192.168.1.11:1212/song')
+    axios.get('http://192.168.1.104:1212/song')
         .then(function (resposta) {
             console.log(resposta)
             idSong = resposta.data.id
@@ -55,7 +55,7 @@ function initializeSong() {
 }
 
 function nextSong() {
-    axios.get('http://192.168.1.11:1212/next-song')
+    axios.get('http://192.168.1.104:1212/next-song')
         .then(function (resposta) {
             idSong = resposta.data.id
             songName.innerText = resposta.data.songName
@@ -68,7 +68,7 @@ function nextSong() {
 }
 
 function previousSong() {
-    axios.get('http://192.168.1.11:1212/previous-song')
+    axios.get('http://192.168.1.104:1212/previous-song')
         .then(function (resposta) {
             idSong = resposta.data.id
             songName.innerText = resposta.data.songName
@@ -81,7 +81,7 @@ function previousSong() {
 }
 
 function shuffle(){
-    axios.get('http://192.168.1.11:1212/shuffle')
+    axios.get('http://192.168.1.104:1212/shuffle')
         .then(function () {
             isShuffled = true
             shuffleButton.classList.add('button-active')
@@ -89,7 +89,7 @@ function shuffle(){
 }
 
 function unshuffle(){
-    axios.get('http://192.168.1.11:1212/unshuffle')
+    axios.get('http://192.168.1.104:1212/unshuffle')
         .then(function () {
             isShuffled = false
             shuffleButton.classList.remove('button-active')
@@ -97,7 +97,7 @@ function unshuffle(){
 }
 
 function likeButtonClicked () {
-    axios.get(`http://192.168.1.11:1212/like/${idSong}`)
+    axios.get(`http://192.168.1.104:1212/like/${idSong}`)
         .then(function (resposta) {
             likeButtonRender(resposta.data)
         })
