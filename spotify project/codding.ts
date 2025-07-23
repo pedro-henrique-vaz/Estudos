@@ -15,7 +15,7 @@ mysql.createConnection({
 
 let playersStatus = [];
 
-const serverIp = "192.168.1.106"
+const serverIp = "192.168.1.108"
 const serverPort = 1212;
 const serverUrl = `http://${serverIp}:${serverPort}`;
 
@@ -84,6 +84,7 @@ app.use((req, res, next) => {
         playersStatus.push(player)
     }
     req.app.locals.player = player
+    req.app.locals.user_id = 1
     next()
     console.log(req.path, player.ip, player.songs[player.index])
 })
@@ -135,33 +136,59 @@ app.get('/unshuffle', (req, res) => {
     res.json()
 })
 
-app.get('/like/:id', (req, res) => {
-    let player = req.app.locals.player
+// app.get('/like/:id', (req, res) => {
+//     let player = req.app.locals.player
+//     const songId = req.params.id
+//     const result = player.songs.find(s => s.id === +songId)
+//     if (!result) {
+//         res.status(404)
+//         res.json("não existe")
+//         return
+//     }
+//     result.liked = !result.liked;
+//     res.json(result.liked);
+// })
+
+app.post('/like/:id', async (req, res) => {
+    let userId = req.app.locals.user_id
     const songId = req.params.id
-    const result = player.songs.find(s => s.id === +songId)
-    if (!result) {
+    const [r, f] = await connection.query(`select * from spotity.like where user_id = ${userId} and song_id = ${songId}`)
+    if (!r || r.length === 0) {
         res.status(404)
         res.json("não existe")
         return
     }
-    result.liked = !result.liked;
-    res.json(result.liked);
+    const [g,h] = await connection.query(`update spotity.like set likes = 1 where likes = 0;`)
+    const song = r[0];
+    song.likes = !song.likes;
+    res.json(song.likes);
 })
 
 app.get('/artists', async (req, res) => {
-    const [r, f]  = await connection.query(`select * from artists where name like '%${req.query.name}%'`)
+    const [r, f] = await connection.query(`select * from artists where name like '%${req.query.name}%'`)
     res.json(r);
 })
 
 
-app.get('/albums', async (req, res) => {
-    const [r, f]  = await connection.query(`select * from album where name like '%${req.query.name}%'`)
+app.get('/album', async (req, res) => {
+    const [r, f] = await connection.query(`select * from album where name like '%${req.query.name}%'`)
     res.json(r);
 })
 
 
 app.get('/songs', async (req, res) => {
-    const [r, f]  = await connection.query(`select * from songs where name like '%${req.query.name}%'`)
+    const [r, f] = await connection.query(`select * from songs where name like '%${req.query.name}%'`)
+    res.json(r);
+})
+
+app.get('/album/:id/songs', async (req, res) => {
+    console.log(req.params.id)
+    const[r, f] = await connection.query(`select * from songs where album_id = ${req.params.id}`)
+    res.json(r);
+})
+
+app.get('/artists/:id/album', async (req, res) => {
+    const[r, f] = await connection.query(`select * from album where artist_id = ${req.params.id}`)
     res.json(r);
 })
 
