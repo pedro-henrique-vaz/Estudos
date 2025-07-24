@@ -1,5 +1,5 @@
 import express from 'express';
-import mysql from "mysql2/promise";
+import mysql, {QueryError} from "mysql2/promise";
 import {Connection} from "mysql2/typings/mysql/lib/Connection";
 const app = express();
 
@@ -75,6 +75,11 @@ function getCurrentIndex(index, songs) {
     return songs[index];
 }
 
+app.use((err, req, res, next) => {
+    console.error(err)
+    res.status(500).send('Something broke!')
+})
+
 app.use(express.static('public'));
 
 app.use((req, res, next) => {
@@ -136,31 +141,40 @@ app.get('/unshuffle', (req, res) => {
     res.json()
 })
 
-// app.get('/like/:id', (req, res) => {
-//     let player = req.app.locals.player
-//     const songId = req.params.id
-//     const result = player.songs.find(s => s.id === +songId)
-//     if (!result) {
-//         res.status(404)
-//         res.json("não existe")
-//         return
-//     }
-//     result.liked = !result.liked;
-//     res.json(result.liked);
-// })
-
-app.post('/like/:id', async (req, res) => {
-    let userId = req.app.locals.user_id
+app.get('/like/:id', (req, res) => {
+    let player = req.app.locals.player
     const songId = req.params.id
-    const [r, f] = await connection.query(`select * from spotity.like where user_id = ${userId} and song_id = ${songId}`)
-    if (!r || r.length === 0) {
+    const result = player.songs.find(s => s.id === +songId)
+    if (!result) {
         res.status(404)
         res.json("não existe")
         return
     }
-    const [g,h] = await connection.query(`update spotity.like set likes = 1 where likes = 0;`)
+    result.liked = !result.liked;
+    res.json(result.liked);
+})
+
+app.post('/like/:id', async (req, res) => {
+    let userId = req.app.locals.user_id
+    const songId = req.params.id
+    const [r, f] = await connection.query(`select * from spotity.like where user_id = ${userId} and song_id = ${songId};`)
+    if (!r || r.length === 0) {
+        try {
+            await connection.query(`insert into spotity.like (likes, user_id, song_id) values (1, ${userId}, ${songId});`)
+            res.json(true)
+            return
+        } catch (err: QueryError) {
+            if(err.errno == 1452){
+                res.status(404)
+                res.json("nao existe")
+                return
+            }
+            throw err
+        }
+    }
     const song = r[0];
     song.likes = !song.likes;
+    await connection.query(`update spotity.like set likes = ${song.likes} where user_id = ${userId} and song_id = ${songId};`)
     res.json(song.likes);
 })
 
@@ -169,12 +183,10 @@ app.get('/artists', async (req, res) => {
     res.json(r);
 })
 
-
 app.get('/album', async (req, res) => {
     const [r, f] = await connection.query(`select * from album where name like '%${req.query.name}%'`)
     res.json(r);
 })
-
 
 app.get('/songs', async (req, res) => {
     const [r, f] = await connection.query(`select * from songs where name like '%${req.query.name}%'`)
