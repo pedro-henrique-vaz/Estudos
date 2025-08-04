@@ -17,7 +17,7 @@ let isPlaying = false;
 let isShuffled = false;
 let repeatOn = false;
 let idSong;
-
+let url = "http://192.168.1.108:1212"
 
 function playSong() {
     isPlaying = true;
@@ -42,46 +42,46 @@ function playPauseDecider() {
 }
 
 function initializeSong() {
-    axios.get('http://192.168.1.104:1212/song')
+    axios.get(`${url}/play/album/3/song/1`)
         .then(function (resposta) {
             console.log(resposta)
             idSong = resposta.data.id
-            songName.innerText = resposta.data.songName
-            bandName.innerText = resposta.data.artist
-            song.src = resposta.data.file
-            cover.src = resposta.data.cover
+            songName.innerText = resposta.data.name
+            bandName.innerText = resposta.data.artist_name
+            song.src = url+resposta.data.song_link
+            cover.src = url+resposta.data.album
             likeButtonRender(resposta.data.liked);
         })
 }
 
 function nextSong() {
-    axios.get('http://192.168.1.104:1212/next-song')
+    axios.get(`${url}/next-song`)
         .then(function (resposta) {
             idSong = resposta.data.id
-            songName.innerText = resposta.data.songName
-            bandName.innerText = resposta.data.artist
-            song.src = resposta.data.file
-            cover.src = resposta.data.cover
+            songName.innerText = resposta.data.name
+            bandName.innerText = resposta.data.artist_name
+            song.src = url+resposta.data.song_link
+            cover.src = url+resposta.data.album
             playSong();
             likeButtonRender(resposta.data.liked);
         });
 }
 
 function previousSong() {
-    axios.get('http://192.168.1.104:1212/previous-song')
+    axios.get(`${url}/previous-song`)
         .then(function (resposta) {
             idSong = resposta.data.id
-            songName.innerText = resposta.data.songName
-            bandName.innerText = resposta.data.artist
-            song.src = resposta.data.file
-            cover.src = resposta.data.cover
+            songName.innerText = resposta.data.name
+            bandName.innerText = resposta.data.artist_name
+            song.src = url+resposta.data.song_link
+            cover.src = url+resposta.data.album
             playSong();
             likeButtonRender(resposta.data.liked);
         })
 }
 
 function shuffle(){
-    axios.get('http://192.168.1.104:1212/shuffle')
+    axios.get(`${url}/shuffle`)
         .then(function () {
             isShuffled = true
             shuffleButton.classList.add('button-active')
@@ -89,7 +89,7 @@ function shuffle(){
 }
 
 function unshuffle(){
-    axios.get('http://192.168.1.104:1212/unshuffle')
+    axios.get(`${url}/unshuffle`)
         .then(function () {
             isShuffled = false
             shuffleButton.classList.remove('button-active')
@@ -97,7 +97,7 @@ function unshuffle(){
 }
 
 function likeButtonClicked () {
-    axios.get(`http://192.168.1.104:1212/like/${idSong}`)
+    axios.get(`${url}/like/${idSong}`)
         .then(function (resposta) {
             likeButtonRender(resposta.data)
         })

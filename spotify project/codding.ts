@@ -17,60 +17,7 @@ let playersStatus = [];
 
 const serverIp = "192.168.1.108"
 const serverPort = 1212;
-const serverUrl = `http://${serverIp}:${serverPort}`;
 
-let songs = [
-    {
-        id: 1,
-        songName: "Bad Boys",
-        file: `${serverUrl}/src/testes/bad_boys.mp3`,
-        cover: `${serverUrl}/src/testes/bad_boys.png`,
-        artist: "Inner Cycle",
-        liked: false
-    },
-    {
-        id: 2,
-        songName: "Havana",
-        file: `${serverUrl}/src/testes/havana.mp3`,
-        cover: `${serverUrl}/src/testes/havana.png`,
-        artist: "Camila Cabello",
-        liked: false
-    },
-    {
-        id: 3,
-        songName: "Save Yours Tears",
-        file: `${serverUrl}/src/testes/save_yours_tears.mp3`,
-        cover: `${serverUrl}/src/testes/save_yours_tears.png`,
-        artist: "The Weeknd",
-        liked: false
-    },
-    {
-        id: 4,
-        songName: "333",
-        file: `${serverUrl}/src/testes/333.mp3`,
-        cover: `${serverUrl}/src/testes/333.png`,
-        artist: "Matuê",
-        liked: false
-    },
-    {
-        id: 5,
-        songName: "777-666",
-        file: `${serverUrl}/src/testes/777-666.mp3`,
-        cover: `${serverUrl}/src/testes/777-666.png`,
-        artist: "Matuê",
-        liked: false
-    },
-    {
-        id: 6,
-        songName: "Melhor Eu Ir",
-        file: `${serverUrl}/src/testes/melhor_eu_ir.mp3`,
-        cover: `${serverUrl}/src/testes/melhor_eu_ir.png`,
-        artist: "Péricles",
-        liked: false
-    }
-]
-
-let songsOrigin = [...songs]
 function getCurrentIndex(index, songs) {
     return songs[index];
 }
@@ -83,15 +30,8 @@ app.use((err, req, res, next) => {
 app.use(express.static('public'));
 
 app.use((req, res, next) => {
-    let player = playersStatus.find(el => el.ip === req.socket.remoteAddress);
-    if (!player) {
-        player = {ip: req.socket.remoteAddress, index: 0, songs: [...songs.map(song => ({ ...song}))]};
-        playersStatus.push(player)
-    }
-    req.app.locals.player = player
     req.app.locals.user_id = 1
     next()
-    console.log(req.path, player.ip, player.songs[player.index])
 })
 
 app.get('/song', (req, res) => {
@@ -100,8 +40,29 @@ app.get('/song', (req, res) => {
     res.json(getCurrentIndex(player.index, player.songs));
 })
 
+app.get('/play/album/:album_id/song/:song_id', async (req, res) => {
+   const[r, f] = await connection.query(`select * from songs where album_id = ${req.params.album_id};`)
+    const index = r.findIndex(song => song.id == req.params.song_id)
+    if (index === -1) {
+        res.status(404)
+        res.json("não existe musica ou album")
+        return
+    }
+    let player = playersStatus.find(el => el.user_id === req.app.locals.user_id);
+    if (!player) {
+        player = {user_id: req.app.locals.user_id, index: index, songs: r};
+        playersStatus.push(player)
+    }
+    res.json(getCurrentIndex(index, r));
+})
+
 app.get('/next-song', (req, res) => {
-    let player = req.app.locals.player
+    let player = playersStatus.find(el => el.user_id === req.app.locals.user_id)
+    if (!player) {
+        res.status(404)
+        res.json("não existe player")
+        return
+    }
     if (player.index === player.songs.length - 1) {
         player.index = 0;
     } else {
@@ -111,7 +72,12 @@ app.get('/next-song', (req, res) => {
 })
 
 app.get('/previous-song', (req, res) => {
-    let player = req.app.locals.player
+    let player = playersStatus.find(el => el.user_id === req.app.locals.user_id)
+    if (!player) {
+        res.status(404)
+        res.json("não existe player")
+        return
+    }
     if(player.index === 0){
         player.index = player.songs.length - 1;
     }
@@ -122,7 +88,12 @@ app.get('/previous-song', (req, res) => {
 })
 
 app.get('/shuffle', (req, res) => {
-    let player = req.app.locals.player
+    let player = playersStatus.find(el => el.user_id === req.app.locals.user_id)
+    if (!player) {
+        res.status(404)
+        res.json("não existe player")
+        return
+    }
     const size = player.songs.length;
     let nowIndex = size - 1;
     while(nowIndex > 0){
@@ -136,22 +107,14 @@ app.get('/shuffle', (req, res) => {
 })
 
 app.get('/unshuffle', (req, res) => {
-    let player = req.app.locals.player
-    player.songs = [...songsOrigin]
-    res.json()
-})
-
-app.get('/like/:id', (req, res) => {
-    let player = req.app.locals.player
-    const songId = req.params.id
-    const result = player.songs.find(s => s.id === +songId)
-    if (!result) {
+    let player = playersStatus.find(el => el.user_id === req.app.locals.user_id)
+    if (!player) {
         res.status(404)
-        res.json("não existe")
+        res.json("não existe player")
         return
     }
-    result.liked = !result.liked;
-    res.json(result.liked);
+    // player.songs = [...songsOrigin]
+    res.json()
 })
 
 app.post('/like/:id', async (req, res) => {
