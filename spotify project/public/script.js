@@ -12,6 +12,7 @@ const shuffleButton = document.getElementById("shuffle");
 const repeatButton = document.getElementById('repeat');
 const songTime = document.getElementById('song-time');
 const totalTime = document.getElementById('total-time');
+const searchSongs = document.getElementById('search-songs');
 
 let isPlaying = false;
 let isShuffled = false;
@@ -49,7 +50,8 @@ function initializeSong() {
             songName.innerText = resposta.data.name
             bandName.innerText = resposta.data.artist_name
             song.src = url+resposta.data.song_link
-            cover.src = url+resposta.data.album
+            cover.src = url+resposta.data.album_cover
+            console.log(resposta.data)
             likeButtonRender(resposta.data.liked);
         })
 }
@@ -61,7 +63,7 @@ function nextSong() {
             songName.innerText = resposta.data.name
             bandName.innerText = resposta.data.artist_name
             song.src = url+resposta.data.song_link
-            cover.src = url+resposta.data.album
+            cover.src = url+resposta.data.album_cover
             playSong();
             likeButtonRender(resposta.data.liked);
         });
@@ -74,7 +76,7 @@ function previousSong() {
             songName.innerText = resposta.data.name
             bandName.innerText = resposta.data.artist_name
             song.src = url+resposta.data.song_link
-            cover.src = url+resposta.data.album
+            cover.src = url+resposta.data.album_cover
             playSong();
             likeButtonRender(resposta.data.liked);
         })
@@ -165,6 +167,15 @@ function likeButtonRender(liked) {
        }
 }
 
+function searchSong(event){
+    if(event.key === 'Enter'){
+        axios.get(`${url}/artists`)
+        .then(function (resposta) {
+            console.log(resposta.data)
+        })
+    }
+}
+
 initializeSong();
 
 play.addEventListener('click', playPauseDecider);
@@ -177,3 +188,4 @@ progressContainer.addEventListener('click', jumpTo);
 shuffleButton.addEventListener("click", shuffleBottomClicked);
 repeatButton.addEventListener("click", repeatButtonClicked);
 likeButton.addEventListener("click", likeButtonClicked);
+searchSongs.addEventListener("keydown", searchSong);
