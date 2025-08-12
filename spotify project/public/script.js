@@ -12,7 +12,10 @@ const shuffleButton = document.getElementById("shuffle");
 const repeatButton = document.getElementById('repeat');
 const songTime = document.getElementById('song-time');
 const totalTime = document.getElementById('total-time');
-const searchSongs = document.getElementById('search-songs');
+const searchArtist = document.getElementById('search');
+const searchAlbum = document.getElementById('search');
+const searchSong = document.getElementById('search');
+
 
 let isPlaying = false;
 let isShuffled = false;
@@ -99,7 +102,7 @@ function unshuffle(){
 }
 
 function likeButtonClicked () {
-    axios.get(`${url}/like/${idSong}`)
+    axios.post(`${url}/like/${idSong}`)
         .then(function (resposta) {
             likeButtonRender(resposta.data)
         })
@@ -167,12 +170,42 @@ function likeButtonRender(liked) {
        }
 }
 
-function searchSong(event){
+function searchArtists(event){
     if(event.key === 'Enter'){
-        axios.get(`${url}/artists`)
+        const nameArtist = event.target.value;
+        axios.get(`${url}/artists?name=${nameArtist}`)
         .then(function (resposta) {
             console.log(resposta.data)
         })
+        .catch (function (err) {
+            console.log("Artista Inexistente", err);
+        })
+    }
+}
+
+function searchAlbums(event){
+    if(event.key === 'Enter'){
+        const nameAlbum = event.target.value;
+        axios.get(`${url}/album?name=${nameAlbum}`)
+            .then(function (resposta) {
+                console.log(resposta.data)
+            })
+            .catch (function (err) {
+                console.log("Album Inexistente", err);
+            })
+    }
+}
+
+function searchSongs(event){
+    if(event.key === 'Enter'){
+        const nameSong = event.target.value;
+        axios.get(`${url}/songs?name=${nameSong}`)
+            .then(function (resposta) {
+                console.log(resposta.data)
+            })
+            .catch (function (err) {
+                console.log("Música Inexistente", err);
+            })
     }
 }
 
@@ -188,4 +221,8 @@ progressContainer.addEventListener('click', jumpTo);
 shuffleButton.addEventListener("click", shuffleBottomClicked);
 repeatButton.addEventListener("click", repeatButtonClicked);
 likeButton.addEventListener("click", likeButtonClicked);
-searchSongs.addEventListener("keydown", searchSong);
+searchArtist.addEventListener("keydown", searchArtists);
+searchAlbum.addEventListener("keydown", searchAlbums);
+searchSong.addEventListener("keydown", searchSongs);
+
+
