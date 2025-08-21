@@ -1,0 +1,119 @@
+body main {
+    background: #020024;
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    /*height: 100%;*/
+    color: black;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    background-color: inherit;
+    color: inherit;
+    border: none;
+}
+
+.button-active {
+    color: rgb(0, 183, 107);
+}
+.button-active-like {
+    color: #ff0000;
+}
+.button {
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.light-color {
+    color: rgb(0, 0, 0);
+}
+
+.button-navigate {
+    font-size: 3em;
+}
+
+.button-biggest {
+    font-size: 4em;
+}
+
+#divBusca{
+    background-color: #000000;
+    border:solid 1px;
+    border-radius:15px;
+    width:300px;
+}
+
+#search{
+    float:left;
+    background-color:transparent;
+    padding-left:5px;
+    font-style:italic;
+    font-size:18px;
+    border:none;
+    height:32px;
+    width:260px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+#cover {
+    width: 450px;
+    border-radius: 10px;
+}
+
+#playlist-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px 0 40px 0;
+}
+
+#button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+#song-name {
+    font-size: 1.5em;
+    font-weight: bolder;
+}
+
+#progress-bar {
+    background-color: rgb(0, 0, 0);
+    height: 3px;
+    width: 100%;
+    border-radius: 15px;
+}
+
+#current-progress {
+    --progress: 0%;
+    background-color: #000000;
+    height: inherit;
+    width: var(--progress);
+    border-radius: inherit;
+}
+
+#progress-container {
+    cursor: pointer;
+
+}
+#time-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: smaller;
+    margin-top: 0.5em;
+}
+#below-cover {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3em 0 1em 0;
+}
+
