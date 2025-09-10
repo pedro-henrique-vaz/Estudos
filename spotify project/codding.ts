@@ -1,6 +1,7 @@
 import express from 'express';
 import mysql, {QueryError} from "mysql2/promise";
 import {Connection} from "mysql2/typings/mysql/lib/Connection";
+import cors from 'cors';
 const app = express();
 
 let connection: Connection;
@@ -15,13 +16,14 @@ mysql.createConnection({
 
 let playersStatus = [];
 
-const serverIp = "192.168.1.108"
+const serverIp = "127.0.0.1"
 const serverPort = 1212;
 
 function getCurrentIndex(index, songs) {
     return songs[index];
 }
 
+app.use(cors<Request>())
 app.use((err, req, res, next) => {
     console.error(err)
     res.status(500).send('Something broke!')

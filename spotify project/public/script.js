@@ -1,17 +1,23 @@
 const songName = document.getElementById("song-name");
 const bandName = document.getElementById("band-name");
+
 const song = document.getElementById("audio");
 const cover = document.getElementById("cover");
+
 const play = document.getElementById("play");
 const next = document.getElementById("next");
 const previous = document.getElementById("previous");
+
 const likeButton = document.getElementById("like");
 const currentProgress = document.getElementById("current-progress");
 const progressContainer = document.getElementById("progress-container");
+
 const shuffleButton = document.getElementById("shuffle");
 const repeatButton = document.getElementById('repeat');
+
 const songTime = document.getElementById('song-time');
 const totalTime = document.getElementById('total-time');
+
 const searchArtist = document.getElementById('search');
 const searchAlbum = document.getElementById('search');
 const searchSong = document.getElementById('search');
