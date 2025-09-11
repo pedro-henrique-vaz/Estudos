@@ -4,19 +4,16 @@
     <v-img id="cover" alt="Disc Cover." :src="cover"></v-img>
     <audio ref="audio" id="audio" :src="media"></audio>
 
+
     <div id="below-cover">
       <div id="song-info">
         <div id="song-name">{{musicName}}</div>
         <div id="band-name" class="light-color">{{bandName}}</div>
       </div>
 
-      <button id="like" class="button light-color" v-show="!likeButton" @click="like">
-        <i class="mdi mdi-heart-outline"></i>
+      <button id="like" class="button" :class="{'light-color': !likeButton, 'button-active-like': likeButton}" @click="likeButtonClicked">
+        <i class="mdi" :class="{'mdi mdi-heart-outline': !likeButton, 'mdi-heart': likeButton}"></i>
       </button>
-      <button id="dontLike" class="button light-color" v-show="likeButton" @click="dontLike">
-        <i class="mdi mdi-heart"></i>
-      </button>
-
     </div>
 
     <div id="progress-container">
@@ -30,7 +27,10 @@
     </div>
 
     <div id="button-container">
-      <button id="shuffle" class="button" @click="shuffle">
+      <button id="shuffle" class="button button-disable" v-show="!shuffleButton" @click="shuffle">
+        <i class="mdi-shuffle mdi"></i>
+      </button>
+      <button id="unshuffle" class="button button-active" v-show="shuffleButton" @click="unshuffle">
         <i class="mdi-shuffle mdi"></i>
       </button>
 
@@ -49,7 +49,7 @@
         <i class="mdi-skip-next mdi"></i>
       </button>
 
-      <button id="repeat" class="button" @click="unshuffle">
+      <button id="repeat" class="button" :class="{'button-disable': !repeatButton, 'button-active': repeatButton}" @click="repeatButtonClicked">
         <i class="mdi-repeat mdi"></i>
       </button>
     </div>
@@ -68,12 +68,13 @@ const audio = ref(null);
 const media = ref("");
 const cover = ref("");
 const likeButton = ref(false);
+const shuffleButton = ref(false);
+const repeatButton = ref(false);
 const isPlaying = ref(false);
 const musicName = ref("");
 const bandName = ref("");
-let isShuffled = false;
 let repeatOn = false;
-let idSong;
+const idSong = ref(0);
 
 function play() {
   isPlaying.value = !isPlaying.value
@@ -90,83 +91,74 @@ onMounted(() => {
 })
 
 function initializeSong() {
-  axios.get(`${url}/play/album/4/song/69`)
+  axios.get(`${url}/play/album/3/song/10`)
     .then(function (resposta) {
-      idSong = resposta.data.id
+      idSong.value = resposta.data.id
       musicName.value = resposta.data.name
       bandName.value = resposta.data.artist_name
       media.value = url+resposta.data.song_link
       cover.value = url+resposta.data.album_cover
+      likeButton.value = resposta.data.liked
       console.log(resposta.data)
-      // likeButtonRender(resposta.data.liked);
     })
 }
 
 function nextSong() {
   axios.get(`${url}/next-song`)
     .then(function (resposta) {
-      idSong = resposta.data.id
+      idSong.value = resposta.data.id
       musicName.value = resposta.data.name
       bandName.value = resposta.data.artist_name
       media.value = url+resposta.data.song_link
       cover.value = url+resposta.data.album_cover
+      likeButton.value = resposta.data.liked
       play();
-      // likeButtonRender(resposta.data.liked);
     });
 }
 
 function previousSong() {
   axios.get(`${url}/previous-song`)
     .then(function (resposta) {
-      idSong = resposta.data.id
+      idSong.value = resposta.data.id
       musicName.value = resposta.data.name
       bandName.value = resposta.data.artist_name
       media.value = url+resposta.data.song_link
       cover.value = url+resposta.data.album_cover
+      likeButton.value = resposta.data.liked
       play();
-      // likeButtonRender(resposta.data.liked);
     })
 }
 
 function shuffle(){
   axios.get(`${url}/shuffle`)
     .then(function () {
-      isShuffled = true
-      // shuffleButton.classList.add('button-active')
+      shuffleButton.value = !shuffleButton.value
     })
 }
 
 function unshuffle(){
   axios.get(`${url}/unshuffle`)
     .then(function () {
-      isShuffled = false
-      // shuffleButton.classList.remove('button-active')
+      shuffleButton.value = !shuffleButton.value
     })
+}
+
+function repeatButtonClicked (){
+  repeatButton.value = !repeatButton.value
+}
+
+function nextOrRepeat () {
+  if (!repeatOn) {
+    pause()
+  } else {
+    play()
+  }
 }
 
 function likeButtonClicked () {
-  axios.post(`${url}/like/${idSong}`)
+  axios.post(`${url}/like/${idSong.value}`)
     .then(function (resposta) {
-      // likeButtonRender(resposta.data)
+      likeButton.value = resposta.data
     })
 }
-
-function like() {
-  likeButton.value = !likeButton.value
-}
-
-function dontLike() {
-  likeButton.value = !likeButton.value
-}
-// function likeButtonRender(liked) {
-//   if (liked === true){
-//     likeButton.querySelector('.bi').classList.remove('bi-heart');
-//     likeButton.querySelector('.bi').classList.add('bi-heart-fill');
-//     likeButton.querySelector('.bi').classList.add('button-active-like');
-//   } else {
-//     likeButton.querySelector('.bi').classList.add('bi-heart');
-//     likeButton.querySelector('.bi').classList.remove('bi-heart-fill');
-//     likeButton.querySelector('.bi').classList.remove('button-active-like');
-//   }
-// }
 </script>

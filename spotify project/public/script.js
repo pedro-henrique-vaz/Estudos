@@ -29,83 +29,91 @@ let repeatOn = false;
 let idSong;
 let url = "http://192.168.1.108:1212"
 
-function playSong() {
-    isPlaying = true;
-    play.querySelector("i.bi").classList.remove("bi-play-circle-fill");
-    play.querySelector("i.bi").classList.add("bi-pause-circle-fill");
-    song.play();
-}
+// function playSong() {
+//     isPlaying = true;
+//     play.querySelector("i.bi").classList.remove("bi-play-circle-fill");
+//     play.querySelector("i.bi").classList.add("bi-pause-circle-fill");
+//     song.play();
+// }
 
-function pauseSong() {
-    isPlaying = false;
-    play.querySelector("i.bi").classList.add("bi-play-circle-fill");
-    play.querySelector("i.bi").classList.remove("bi-pause-circle-fill");
-    song.pause();
-}
+// function pauseSong() {
+//     isPlaying = false;
+//     play.querySelector("i.bi").classList.add("bi-play-circle-fill");
+//     play.querySelector("i.bi").classList.remove("bi-pause-circle-fill");
+//     song.pause();
+// }
 
-function playPauseDecider() {
-    if (isPlaying === true) {
-        pauseSong();
-    } else {
-        playSong();
-    }
-}
+// function playPauseDecider() {
+//     if (isPlaying === true) {
+//         pauseSong();
+//     } else {
+//         playSong();
+//     }
+// }
 
-function initializeSong() {
-    axios.get(`${url}/play/album/3/song/1`)
-        .then(function (resposta) {
-            console.log(resposta)
-            idSong = resposta.data.id
-            songName.innerText = resposta.data.name
-            bandName.innerText = resposta.data.artist_name
-            song.src = url+resposta.data.song_link
-            cover.src = url+resposta.data.album_cover
-            console.log(resposta.data)
-            likeButtonRender(resposta.data.liked);
-        })
-}
+// function initializeSong() {
+//     axios.get(`${url}/play/album/3/song/1`)
+//         .then(function (resposta) {
+//             console.log(resposta)
+//             idSong = resposta.data.id
+//             songName.innerText = resposta.data.name
+//             bandName.innerText = resposta.data.artist_name
+//             song.src = url+resposta.data.song_link
+//             cover.src = url+resposta.data.album_cover
+//             console.log(resposta.data)
+//             likeButtonRender(resposta.data.liked);
+//         })
+// }
 
-function nextSong() {
-    axios.get(`${url}/next-song`)
-        .then(function (resposta) {
-            idSong = resposta.data.id
-            songName.innerText = resposta.data.name
-            bandName.innerText = resposta.data.artist_name
-            song.src = url+resposta.data.song_link
-            cover.src = url+resposta.data.album_cover
-            playSong();
-            likeButtonRender(resposta.data.liked);
-        });
-}
+// function nextSong() {
+//     axios.get(`${url}/next-song`)
+//         .then(function (resposta) {
+//             idSong = resposta.data.id
+//             songName.innerText = resposta.data.name
+//             bandName.innerText = resposta.data.artist_name
+//             song.src = url+resposta.data.song_link
+//             cover.src = url+resposta.data.album_cover
+//             playSong();
+//             likeButtonRender(resposta.data.liked);
+//         });
+// }
 
-function previousSong() {
-    axios.get(`${url}/previous-song`)
-        .then(function (resposta) {
-            idSong = resposta.data.id
-            songName.innerText = resposta.data.name
-            bandName.innerText = resposta.data.artist_name
-            song.src = url+resposta.data.song_link
-            cover.src = url+resposta.data.album_cover
-            playSong();
-            likeButtonRender(resposta.data.liked);
-        })
-}
+// function previousSong() {
+//     axios.get(`${url}/previous-song`)
+//         .then(function (resposta) {
+//             idSong = resposta.data.id
+//             songName.innerText = resposta.data.name
+//             bandName.innerText = resposta.data.artist_name
+//             song.src = url+resposta.data.song_link
+//             cover.src = url+resposta.data.album_cover
+//             playSong();
+//             likeButtonRender(resposta.data.liked);
+//         })
+// }
 
-function shuffle(){
-    axios.get(`${url}/shuffle`)
-        .then(function () {
-            isShuffled = true
-            shuffleButton.classList.add('button-active')
-        })
-}
+// function shuffle(){
+//     axios.get(`${url}/shuffle`)
+//         .then(function () {
+//             isShuffled = true
+//             shuffleButton.classList.add('button-active')
+//         })
+// }
 
-function unshuffle(){
-    axios.get(`${url}/unshuffle`)
-        .then(function () {
-            isShuffled = false
-            shuffleButton.classList.remove('button-active')
-        })
-}
+// function unshuffle(){
+//     axios.get(`${url}/unshuffle`)
+//         .then(function () {
+//             isShuffled = false
+//             shuffleButton.classList.remove('button-active')
+//         })
+// }
+
+// function shuffleBottomClicked(){
+//     if (isShuffled === false){
+//         shuffle()
+//     } else {
+//         unshuffle()
+//     }
+// }
 
 function likeButtonClicked () {
     axios.post(`${url}/like/${idSong}`)
@@ -127,23 +135,17 @@ function jumpTo(event){
     song.currentTime = jumpToTime;
 }
 
-function shuffleBottomClicked(){
-    if (isShuffled === false){
-        shuffle()
-    } else {
-        unshuffle()
-    }
-}
 
-function repeatButtonClicked (){
-    if (repeatOn === false) {
-        repeatOn = true;
-        repeatButton.classList.add('button-active');
-    } else {
-        repeatOn = false;
-        repeatButton.classList.remove('button-active');
-    }
-}
+
+// function repeatButtonClicked (){
+//     if (repeatOn === false) {
+//         repeatOn = true;
+//         repeatButton.classList.add('button-active');
+//     } else {
+//         repeatOn = false;
+//         repeatButton.classList.remove('button-active');
+//     }
+// }
 
 function nextOrRepeat () {
     if (repeatOn === false) {
@@ -164,17 +166,17 @@ function updateTotalTime() {
     totalTime.innerText = toHHMMSS(song.duration);
 }
 
-function likeButtonRender(liked) {
-       if (liked === true){
-           likeButton.querySelector('.bi').classList.remove('bi-heart');
-           likeButton.querySelector('.bi').classList.add('bi-heart-fill');
-           likeButton.querySelector('.bi').classList.add('button-active-like');
-       } else {
-           likeButton.querySelector('.bi').classList.add('bi-heart');
-           likeButton.querySelector('.bi').classList.remove('bi-heart-fill');
-           likeButton.querySelector('.bi').classList.remove('button-active-like');
-       }
-}
+// function likeButtonRender(liked) {
+//        if (liked === true){
+//            likeButton.querySelector('.bi').classList.remove('bi-heart');
+//            likeButton.querySelector('.bi').classList.add('bi-heart-fill');
+//            likeButton.querySelector('.bi').classList.add('button-active-like');
+//        } else {
+//            likeButton.querySelector('.bi').classList.add('bi-heart');
+//            likeButton.querySelector('.bi').classList.remove('bi-heart-fill');
+//            likeButton.querySelector('.bi').classList.remove('button-active-like');
+//        }
+// }
 
 function searchArtists(event){
     if(event.key === 'Enter'){

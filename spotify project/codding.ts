@@ -43,7 +43,13 @@ app.get('/song', (req, res) => {
 })
 
 app.get('/play/album/:album_id/song/:song_id', async (req, res) => {
-    const[r, f] = await connection.query(`select songs.id, songs.name, songs.artist_name, songs.song_link, album.album_cover from songs inner join album on songs.album_id = album.id where album_id = ${req.params.album_id};`)
+    const[r, f] = await connection.query(`
+select songs.id, songs.name, songs.artist_name, songs.song_link, album.album_cover, coalesce(likes, 0) as 'liked'
+from songs
+         inner join album on songs.album_id = album.id
+         left join \`like\` l on songs.id = l.song_id and l.user_id = ${req.app.locals.user_id}
+where album_id = ${req.params.album_id};
+`)
     const index = r.findIndex(song => song.id == req.params.song_id)
     if (index === -1) {
         res.status(404)
