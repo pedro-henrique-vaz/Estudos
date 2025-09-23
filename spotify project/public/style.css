@@ -22,9 +22,11 @@ button {
 .button-disabled {
     color: rgb(0, 0, 0);
 }
+
 .button-active-like {
     color: #ff0000;
 }
+
 .button {
     font-size: 1.5em;
     cursor: pointer;
@@ -113,6 +115,7 @@ button {
     font-size: smaller;
     margin-top: 0.5em;
 }
+
 #below-cover {
     display: flex;
     flex-direction: row;

@@ -50,7 +50,7 @@ from songs
          left join \`like\` l on songs.id = l.song_id and l.user_id = ${req.app.locals.user_id}
 where album_id = ${req.params.album_id};
 `)
-    const index = r.findIndex(song => song.id == req.params.song_id)
+    const index =   r.findIndex(song => song.id == req.params.song_id)
     if (index === -1) {
         res.status(404)
         res.json("não existe musica ou album")

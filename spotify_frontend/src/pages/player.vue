@@ -2,7 +2,7 @@
   <div class="music-container">
     <h4 id="playlist-title">As Melhores Músicas Estão Aqui</h4>
     <v-img id="cover" alt="Disc Cover." :src="cover"></v-img>
-    <audio ref="audio" id="audio" :src="media"></audio>
+    <audio ref="audio" id="audio" :src="media" @timeupdate="updateProgressBar" @ended="nextOrRepeat" @loadedmetadata="updateTotalTime"></audio>
 
 
     <div id="below-cover">
@@ -16,13 +16,13 @@
       </button>
     </div>
 
-    <div id="progress-container">
+    <div id="progress-container" ref="progressContainer" @click="jumpTo">
       <div id="progress-bar">
-        <div id="current-progress"></div>
+        <div id="current-progress" :style="{'--progress': `${progressBar}%`}"></div>
       </div>
       <div id="time-box">
-        <div id="song-time">00:00:00</div>
-        <div id="total-time">00:00:00</div>
+        <div id="song-time" class="songTime">{{ songTime }}</div>
+        <div id="total-time" class="songTime">{{ totalTime }}</div>
       </div>
     </div>
 
@@ -38,7 +38,7 @@
         <i class="mdi-skip-previous mdi"></i>
       </button>
 
-      <button id="play" class="button button-biggest" v-show="!isPlaying" @click="play">
+      <button id="play" class="button button-biggest" v-show="!isPlaying" @click="playPauseDecider">
         <i class="mdi-play-circle mdi"></i>
       </button>
       <button id="pause" class="button button-biggest" v-show="isPlaying" @click="pause">
@@ -65,26 +65,42 @@ import axios from "axios";
 
 let url = "http://127.0.0.1:1212"
 const audio = ref(null);
+const progressContainer = ref(null);
 const media = ref("");
 const cover = ref("");
 const likeButton = ref(false);
 const shuffleButton = ref(false);
 const repeatButton = ref(false);
 const isPlaying = ref(false);
+const songTime = ref("00:00:00");
+const totalTime = ref("00:00:00");
+const progressBar = ref(0);
 const musicName = ref("");
 const bandName = ref("");
-let repeatOn = false;
+const repeatOn = ref(false);
 const idSong = ref(0);
 
 function play() {
-  isPlaying.value = !isPlaying.value
-  audio.value.play();
+  if(!isPlaying.value){
+    isPlaying.value = false;
+    audio.value.play();
+  }
 }
 
 function pause() {
-  isPlaying.value = !isPlaying.value
-  audio.value.pause();
+  if(isPlaying.value){
+    isPlaying.value = false;
+    audio.value.pause();
+  }
 }
+
+// function playPauseDecider() {
+//   if (isPlaying === true) {
+//     pause();
+//   } else {
+//     play();
+//   }
+// }
 
 onMounted(() => {
   initializeSong();
@@ -148,8 +164,8 @@ function repeatButtonClicked (){
 }
 
 function nextOrRepeat () {
-  if (!repeatOn) {
-    pause()
+  if (!repeatOn.value) {
+    nextSong()
   } else {
     play()
   }
@@ -160,5 +176,67 @@ function likeButtonClicked () {
     .then(function (resposta) {
       likeButton.value = resposta.data
     })
+}
+
+function updateProgressBar(){
+  progressBar.value = (audio.value.currentTime/audio.value.duration) * 100;
+  songTime.value = toHHMMSS(audio.value.currentTime??0);
+}
+
+function jumpTo(event){
+  const width = progressContainer.value.clientWidth;
+  const clickPosition = event.offsetX;
+  const jumpToTime = (clickPosition/width)* audio.value.duration;
+  audio.value.currentTime = jumpToTime;
+}
+
+function toHHMMSS (originalNumber) {
+  let hours = Math.floor(originalNumber / 3600);
+  let minutes = Math.floor((originalNumber - hours * 3600) / 60);
+  let seconds = Math.floor(originalNumber - hours * 3600 - minutes * 60);
+  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+function updateTotalTime() {
+  totalTime.value = toHHMMSS(audio.value.duration??0);
+}
+
+function searchArtists(event){
+  if(event.key === 'Enter'){
+    const nameArtist = event.target.value;
+    axios.get(`${url}/artists?name=${nameArtist}`)
+      .then(function (resposta) {
+        console.log(resposta.data)
+      })
+      .catch (function (err) {
+        console.log("Artista Inexistente", err);
+      })
+  }
+}
+
+function searchAlbums(event){
+  if(event.key === 'Enter'){
+    const nameAlbum = event.target.value;
+    axios.get(`${url}/album?name=${nameAlbum}`)
+      .then(function (resposta) {
+        console.log(resposta.data)
+      })
+      .catch (function (err) {
+        console.log("Album Inexistente", err);
+      })
+  }
+}
+
+function searchSongs(event){
+  if(event.key === 'Enter'){
+    const nameSong = event.target.value;
+    axios.get(`${url}/songs?name=${nameSong}`)
+      .then(function (resposta) {
+        console.log(resposta.data)
+      })
+      .catch (function (err) {
+        console.log("Música Inexistente", err);
+      })
+  }
 }
 </script>
