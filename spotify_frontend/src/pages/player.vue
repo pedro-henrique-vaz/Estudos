@@ -38,7 +38,7 @@
         <i class="mdi-skip-previous mdi"></i>
       </button>
 
-      <button id="play" class="button button-biggest" v-show="!isPlaying" @click="playPauseDecider">
+      <button id="play" class="button button-biggest" v-show="!isPlaying" @click="play">
         <i class="mdi-play-circle mdi"></i>
       </button>
       <button id="pause" class="button button-biggest" v-show="isPlaying" @click="pause">
@@ -53,9 +53,6 @@
         <i class="mdi-repeat mdi"></i>
       </button>
     </div>
-  </div>
-  <div>
-    <input type="text" id="search" placeholder="O que vocẽ quer ouvir?" />
   </div>
 </template>
 
@@ -81,26 +78,14 @@ const repeatOn = ref(false);
 const idSong = ref(0);
 
 function play() {
-  if(!isPlaying.value){
-    isPlaying.value = false;
+    isPlaying.value = true;
     audio.value.play();
-  }
 }
 
 function pause() {
-  if(isPlaying.value){
-    isPlaying.value = false;
-    audio.value.pause();
-  }
+  isPlaying.value = false;
+  audio.value.pause();
 }
-
-// function playPauseDecider() {
-//   if (isPlaying === true) {
-//     pause();
-//   } else {
-//     play();
-//   }
-// }
 
 onMounted(() => {
   initializeSong();
@@ -128,7 +113,7 @@ function nextSong() {
       media.value = url+resposta.data.song_link
       cover.value = url+resposta.data.album_cover
       likeButton.value = resposta.data.liked
-      play();
+      play()
     });
 }
 
@@ -141,7 +126,7 @@ function previousSong() {
       media.value = url+resposta.data.song_link
       cover.value = url+resposta.data.album_cover
       likeButton.value = resposta.data.liked
-      play();
+      play()
     })
 }
 
@@ -201,42 +186,4 @@ function updateTotalTime() {
   totalTime.value = toHHMMSS(audio.value.duration??0);
 }
 
-function searchArtists(event){
-  if(event.key === 'Enter'){
-    const nameArtist = event.target.value;
-    axios.get(`${url}/artists?name=${nameArtist}`)
-      .then(function (resposta) {
-        console.log(resposta.data)
-      })
-      .catch (function (err) {
-        console.log("Artista Inexistente", err);
-      })
-  }
-}
-
-function searchAlbums(event){
-  if(event.key === 'Enter'){
-    const nameAlbum = event.target.value;
-    axios.get(`${url}/album?name=${nameAlbum}`)
-      .then(function (resposta) {
-        console.log(resposta.data)
-      })
-      .catch (function (err) {
-        console.log("Album Inexistente", err);
-      })
-  }
-}
-
-function searchSongs(event){
-  if(event.key === 'Enter'){
-    const nameSong = event.target.value;
-    axios.get(`${url}/songs?name=${nameSong}`)
-      .then(function (resposta) {
-        console.log(resposta.data)
-      })
-      .catch (function (err) {
-        console.log("Música Inexistente", err);
-      })
-  }
-}
 </script>
