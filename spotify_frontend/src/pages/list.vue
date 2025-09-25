@@ -1,8 +1,8 @@
 <template>
   <v-container class="pt-16">
-    <v-row justify='start' class="text-h2" style="color: white">Album</v-row>
+    <v-row justify='start' class="text-h2" style="color: white; font-family:Sans-Serif">Álbum</v-row>
     <v-row no-gutters justify="start">
-      <v-col class="ma-2" cols="1" v-for="song in songs">
+      <v-col class="ma-9" cols="1" v-for="song in songs">
         <v-card>
           <v-avatar
             class="ma-3"
@@ -16,7 +16,66 @@
             <div>
               <v-card-title class="text-h6">{{ song.name }}</v-card-title>
               <v-card-subtitle>{{ song.artist }}</v-card-subtitle>
+              <v-card-actions>
+                <v-btn
+                  class="ms-2"
+                  icon="mdi-play"
+                  variant="text"
+                ></v-btn>
+              </v-card-actions>
+            </div>
+          </div>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
+  <v-container class="pt-16">
+    <v-row justify='start' class="text-h2" style="color: white; font-family:Sans-Serif">Artistas</v-row>
+    <v-row no-gutters justify="start">
+      <v-col class="ma-9" cols="1" v-for="song in songs">
+        <v-card>
+          <v-avatar
+            class="ma-3"
+            rounded="0"
+            size="125"
+          >
+            <v-img :src="url + '/' + song.album_cover"></v-img>
+          </v-avatar>
 
+          <div class="d-flex flex-no-wrap justify-space-between">
+            <div>
+              <v-card-title class="text-h6">{{ song.name }}</v-card-title>
+              <v-card-subtitle>{{ song.artist }}</v-card-subtitle>
+              <v-card-actions>
+                <v-btn
+                  class="ms-2"
+                  icon="mdi-play"
+                  variant="text"
+                ></v-btn>
+              </v-card-actions>
+            </div>
+          </div>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
+  <v-container class="pt-16">
+    <v-row justify='start' class="text-h2" style="color: white; font-family:Sans-Serif">Músicas</v-row>
+    <v-row no-gutters justify="start">
+      <v-col class="ma-9" cols="1" v-for="song in songs">
+        <v-card>
+          <v-avatar
+            class="ma-3"
+            rounded="0"
+            size="125"
+          >
+            <v-img :src="url + '/' + song.album_cover"></v-img>
+          </v-avatar>
+
+          <div class="d-flex flex-no-wrap justify-space-between">
+            <div>
+              <v-card-title class="text-h6">{{ song.name }}</v-card-title>
+              <v-card-subtitle>{{ song.artist }}</v-card-subtitle>
               <v-card-actions>
                 <v-btn
                   class="ms-2"
@@ -54,14 +113,14 @@ function searchArtists(event) {
 }
 
 function searchAlbums() {
-    axios.get(`${url}/album?name=${search.value}`)
-      .then(function (resposta) {
-        console.log(resposta.data)
-        songs.value = resposta.data
-      })
-      .catch(function (err) {
-        console.log("Album Inexistente", err);
-      })
+  axios.get(`${url}/album?name=${search.value}`)
+    .then(function (resposta) {
+      console.log(resposta.data)
+      songs.value = resposta.data
+    })
+    .catch(function (err) {
+      console.log("Album Inexistente", err);
+    })
 }
 
 function searchSongs(event) {
@@ -81,5 +140,4 @@ function searchSongs(event) {
 onMounted(() => {
   searchAlbums()
 })
-
 </script>

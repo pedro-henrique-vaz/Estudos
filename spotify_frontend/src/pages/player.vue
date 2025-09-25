@@ -1,6 +1,6 @@
 <template>
   <div class="music-container">
-    <h4 id="playlist-title">As Melhores Músicas Estão Aqui</h4>
+    <h4 id="playlist-title"></h4>
     <v-img id="cover" alt="Disc Cover." :src="cover"></v-img>
     <audio ref="audio" id="audio" :src="media" @timeupdate="updateProgressBar" @ended="nextOrRepeat" @loadedmetadata="updateTotalTime"></audio>
 
