@@ -19,7 +19,7 @@
 
       <div class="flex-grow-1">
         <v-list dense nav class="pa-0">
-          <v-list-item link to="/index">
+          <v-list-item link to="/list">
             <v-list-item-icon>
               <v-icon>mdi-home</v-icon>
             </v-list-item-icon>
@@ -32,21 +32,21 @@
         <v-list dense nav class="pa-0">
           <v-list-item link to="/player">
             <v-list-item-icon>
-              <v-icon>mdi-plus-box</v-icon>
+              <v-icon>mdi-heart</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title>Curtidos</v-list-item-title>
+              <v-list-item-title>Músicas Favoritas</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
 
         <v-list dense nav class="pa-0">
-          <v-list-item link to="/list">
+          <v-list-item link to="/index">
             <v-list-item-icon>
               <v-icon>mdi-bookshelf</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title class="font-weight-bold">Minhas Bibliotecas</v-list-item-title>
+              <v-list-item-title class="font-weight-bold">Minha Biblioteca</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -74,7 +74,7 @@
 
     <v-app-bar :elevation="2" style="background-color: black">
       <v-container>
-        <h2 style="text-align: center; font-family:Sans-Serif">Ás Melhores Músicas Estão Aqui</h2>
+        <h2 style="text-align: center; font-family:Spotify-mix">Ás Melhores Músicas Estão Aqui</h2>
       </v-container>
       <input type="text" id="search" placeholder="O que você quer ouvir?"  @keydown.enter="$router.push({name: '/list', props: true})" />
     </v-app-bar>

@@ -42,7 +42,7 @@ app.get('/song', (req, res) => {
     res.json(getCurrentIndex(player.index, player.songs));
 })
 
-app.get('/play/album/:album_id/song/:song_id', async (req, res) => {
+app.get('/play/album/:album_id', async (req, res) => {
     const[r, f] = await connection.query(`
 select songs.id, songs.name, songs.artist_name, songs.song_link, album.album_cover, coalesce(likes, 0) as 'liked'
 from songs
@@ -50,12 +50,12 @@ from songs
          left join \`like\` l on songs.id = l.song_id and l.user_id = ${req.app.locals.user_id}
 where album_id = ${req.params.album_id};
 `)
-    const index =   r.findIndex(song => song.id == req.params.song_id)
-    if (index === -1) {
+    if (r.length === 0) {
         res.status(404)
         res.json("não existe musica ou album")
         return
     }
+    const index = 0
     let player = playersStatus.find(el => el.user_id === req.app.locals.user_id);
     if (!player) {
         player = {user_id: req.app.locals.user_id, index: index, songs: r, originalSongs: [...r]};
