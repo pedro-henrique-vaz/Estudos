@@ -48,7 +48,7 @@ select songs.id, songs.name, songs.artist_name, songs.song_link, album.album_cov
 from songs
          inner join album on songs.album_id = album.id
          left join \`like\` l on songs.id = l.song_id and l.user_id = ${req.app.locals.user_id}
-where album_id = ${req.params.album_id};
+where album_id = '${req.params.album_id}';
 `)
     if (r.length === 0) {
         res.status(404)
@@ -61,6 +61,9 @@ where album_id = ${req.params.album_id};
         player = {user_id: req.app.locals.user_id, index: index, songs: r, originalSongs: [...r]};
         playersStatus.push(player)
     }
+    player.index = index
+    player.songs = r
+    player.originalSongs = [...r]
     console.log(player)
     res.json(getCurrentIndex(index, r));
 })
@@ -78,6 +81,7 @@ app.get('/next-song', (req, res) => {
         player.index += 1
     }
     res.json(getCurrentIndex(player.index, player.songs));
+
 })
 
 app.get('/previous-song', (req, res) => {

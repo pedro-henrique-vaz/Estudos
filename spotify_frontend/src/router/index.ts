@@ -7,11 +7,13 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import { routes } from 'vue-router/auto-routes'
+import Player from "@/pages/player.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
 })
+router.addRoute({name: "/player/:id", path: "/player/:id", component: Player, props: true})
 
 // Workaround for https://github.com/vitejs/vite/issues/11804
 router.onError((err, to) => {

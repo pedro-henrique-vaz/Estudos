@@ -61,8 +61,7 @@ import {ref, onMounted} from "vue";
 import axios from "axios";
 
 let url = "http://127.0.0.1:1212"
-defineProps({id: String})
-console.log(id.value)
+const props = defineProps({id: String})
 const audio = ref(null);
 const progressContainer = ref(null);
 const media = ref("");
@@ -94,7 +93,7 @@ onMounted(() => {
 })
 
 function initializeSong() {
-  axios.get(`${url}/play/album/${id.value}`)
+  axios.get(`${url}/play/album/${props.id}`)
     .then(function (resposta) {
       idSong.value = resposta.data.id
       musicName.value = resposta.data.name
