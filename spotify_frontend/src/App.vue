@@ -19,18 +19,42 @@
 
       <div class="flex-grow-1">
         <v-list dense nav class="pa-0">
-          <v-list-item link to="/list">
+          <v-list-item link to="/albums-artist">
             <v-list-item-icon>
               <v-icon>mdi-home</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title>Home</v-list-item-title>
+              <v-list-item-title>Página Inicial</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
 
         <v-list dense nav class="pa-0">
-          <v-list-item link to="/player">
+          <v-list-item link to="/artists">
+            <v-list-item-icon>
+              <v-icon>mdi-account-music</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>Artistas</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+
+        <v-list dense nav class="pa-0">
+          <v-list-item link to="/albums">
+            <v-list-item-icon>
+              <v-icon>mdi-image-album</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>Álbuns</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+
+        <v-divider class="my-3"></v-divider>
+
+        <v-list dense nav class="pa-0">
+          <v-list-item link to="/music-favorites">
             <v-list-item-icon>
               <v-icon>mdi-heart</v-icon>
             </v-list-item-icon>
@@ -41,25 +65,12 @@
         </v-list>
 
         <v-list dense nav class="pa-0">
-          <v-list-item link to="/index">
+          <v-list-item link to="/playlists-favorites">
             <v-list-item-icon>
               <v-icon>mdi-bookshelf</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title class="font-weight-bold">Minha Biblioteca</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
-
-        <v-divider class="my-3"></v-divider>
-
-        <v-list dense nav class="pa-0">
-          <v-list-item link to="/create-playlist">
-            <v-list-item-icon>
-              <v-icon>mdi-plus-box</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>Criar Biblioteca</v-list-item-title>
+              <v-list-item-title class="font-weight-bold">Sua Biblioteca</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>

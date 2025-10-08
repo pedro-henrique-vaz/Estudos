@@ -81,7 +81,6 @@ app.get('/next-song', (req, res) => {
         player.index += 1
     }
     res.json(getCurrentIndex(player.index, player.songs));
-
 })
 
 app.get('/previous-song', (req, res) => {
